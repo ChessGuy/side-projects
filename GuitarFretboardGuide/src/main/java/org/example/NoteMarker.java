@@ -31,7 +31,7 @@ public class NoteMarker {
 
         //Draw NoteMarker label (doesn't work.  Results in visual glitch)
         g.setFont(noteFont);
-        //g.setColor(noteNameColor);
+        g.setColor(noteNameColor);
         //g.drawString(noteName, xPos, yPos);
 
     }

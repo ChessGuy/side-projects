@@ -144,8 +144,9 @@ public class MyFrame extends JFrame implements ActionListener {
             button.setBackground(BUTTON_COLORS[i]);
             buttonPanel.add(button);
             noteButtons.add(button);
-            this.add(buttonPanel);
         }
+
+        this.add(buttonPanel);
 
         //Add Clear and Show All Buttons
 
@@ -209,7 +210,11 @@ public class MyFrame extends JFrame implements ActionListener {
 
         //Draw the notes
 
-        ArrayList<NoteMarker> aNoteMarkers = addNotesToFretboard(A_LOCATIONS, g, NOTE_NAMES[A_INDEX], A_COLOR); //Draw A notes
+        if (showANotes) {
+            addNotesToFretboard(A_LOCATIONS, g, NOTE_NAMES[A_INDEX], A_COLOR); //Draw A notes
+        } else {
+            addNotesToFretboard(A_LOCATIONS, g, NOTE_NAMES[A_INDEX], Color.white);
+        }
         addNotesToFretboard(A_SHARP_LOCATIONS, g, NOTE_NAMES[A_SHARP_INDEX], A_SHARP_COLOR);  //Draw A# notes
         addNotesToFretboard(B_LOCATIONS, g, NOTE_NAMES[B_INDEX], B_COLOR);                    //Draw B notes
         addNotesToFretboard(C_LOCATIONS, g, NOTE_NAMES[C_INDEX], C_COLOR);                    //Draw C notes
@@ -222,6 +227,7 @@ public class MyFrame extends JFrame implements ActionListener {
         addNotesToFretboard(G_LOCATIONS, g, NOTE_NAMES[G_INDEX], G_COLOR);                    //Draw G notes
         addNotesToFretboard(G_SHARP_LOCATIONS, g, NOTE_NAMES[G_SHARP_INDEX], G_SHARP_COLOR);  //Draw G# notes
 
+        //repaint();
     }
 
     public ArrayList<NoteMarker> addNotesToFretboard(int[][] locations, Graphics g, String noteNames, Color color) {
@@ -238,7 +244,10 @@ public class MyFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (noteButtons.get(A_INDEX).isSelected()){
+        if (e.getSource() == noteButtons.get(A_INDEX)){
+            showANotes = !showANotes;
+            System.out.println(showANotes);
+            repaint();
 //            for (NoteMarker noteMarker : aNoteMarkers) {  //Cannot access aNoteMarkers because it is in the MyFrame Class
 //                noteMarker.setNoteColor(A_COLOR);
 //            }
