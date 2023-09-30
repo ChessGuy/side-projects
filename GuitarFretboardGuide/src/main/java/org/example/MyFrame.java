@@ -52,6 +52,8 @@ public class MyFrame extends JFrame implements ActionListener {
     final int F_SHARP_INDEX = 9;
     final int G_INDEX = 10;
     final int G_SHARP_INDEX = 11;
+    final int CLEAR_INDEX = 12;
+    final int SHOW_ALL_INDEX = 13;
 
     //Note size variables
 
@@ -72,6 +74,11 @@ public class MyFrame extends JFrame implements ActionListener {
     final int[][] F_SHARP_LOCATIONS = {{2, 0}, {2, 5}, {4, 3}, {7, 1}, {9, 4}, {11, 2}};
     final int[][] G_LOCATIONS = {{0, 2}, {3, 0}, {3, 5}, {5, 3}, {8, 1}, {10, 4}, {12, 2}};
     final int[][] G_SHARP_LOCATIONS = {{1, 2}, {4, 0}, {4, 5}, {6, 3}, {9, 1}, {11, 4}};
+
+    final int [][][] ALL_NOTE_LOCATIONS = {A_LOCATIONS, A_SHARP_LOCATIONS, B_LOCATIONS, C_LOCATIONS, C_SHARP_LOCATIONS,
+    D_LOCATIONS,D_SHARP_LOCATIONS, E_LOCATIONS, F_LOCATIONS, F_SHARP_LOCATIONS, G_LOCATIONS, G_SHARP_LOCATIONS};
+
+
 
     //Note display colors
 
@@ -98,8 +105,23 @@ public class MyFrame extends JFrame implements ActionListener {
     //Button control to show the notes
     ArrayList<JButton> noteButtons = new ArrayList<>();
 
-    boolean showANotes = true;  //boolean to try to only show A notes if true (doesn't work)
+    //booleans to control the buttons
 
+    boolean showANotes = true;
+    boolean showASharpNotes = true;
+    boolean showBNotes = true;
+    boolean showCNotes = true;
+    boolean showCSharpNotes = true;
+    boolean showDNotes = true;
+    boolean showDSharpNotes = true;
+    boolean showENotes = true;
+    boolean showFNotes = true;
+    boolean showFSharpNotes = true;
+    boolean showGNotes = true;
+    boolean showGSharpNotes = true;
+
+    //boolean [] showNotesControl = {showANotes, showASharpNotes, showBNotes, showCNotes, showCSharpNotes, showDNotes, showDSharpNotes, showENotes, showFNotes, showFSharpNotes, showGNotes, showGSharpNotes};
+    boolean [] showNotesControl = {true, true, true, true, true, true, true, true, true, true, true, true};
     MyFrame() {
 
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT); //sets x and y dimension
@@ -210,24 +232,15 @@ public class MyFrame extends JFrame implements ActionListener {
 
         //Draw the notes
 
-        if (showANotes) {
-            addNotesToFretboard(A_LOCATIONS, g, NOTE_NAMES[A_INDEX], A_COLOR); //Draw A notes
-        } else {
-            addNotesToFretboard(A_LOCATIONS, g, NOTE_NAMES[A_INDEX], Color.white);
-        }
-        addNotesToFretboard(A_SHARP_LOCATIONS, g, NOTE_NAMES[A_SHARP_INDEX], A_SHARP_COLOR);  //Draw A# notes
-        addNotesToFretboard(B_LOCATIONS, g, NOTE_NAMES[B_INDEX], B_COLOR);                    //Draw B notes
-        addNotesToFretboard(C_LOCATIONS, g, NOTE_NAMES[C_INDEX], C_COLOR);                    //Draw C notes
-        addNotesToFretboard(C_SHARP_LOCATIONS, g, NOTE_NAMES[C_SHARP_INDEX], C_SHARP_COLOR);  //Draw C# notes
-        addNotesToFretboard(D_LOCATIONS, g, NOTE_NAMES[D_INDEX], D_COLOR);                    //Draw D notes
-        addNotesToFretboard(D_SHARP_LOCATIONS, g, NOTE_NAMES[D_SHARP_INDEX], D_SHARP_COLOR);  //Draw D# notes
-        addNotesToFretboard(E_LOCATIONS, g, NOTE_NAMES[E_INDEX], E_COLOR);                    //Draw E notes
-        addNotesToFretboard(F_LOCATIONS, g, NOTE_NAMES[F_INDEX], F_COLOR);                    //Draw F notes
-        addNotesToFretboard(F_SHARP_LOCATIONS, g, NOTE_NAMES[F_SHARP_INDEX], F_SHARP_COLOR);  //Draw F# notes
-        addNotesToFretboard(G_LOCATIONS, g, NOTE_NAMES[G_INDEX], G_COLOR);                    //Draw G notes
-        addNotesToFretboard(G_SHARP_LOCATIONS, g, NOTE_NAMES[G_SHARP_INDEX], G_SHARP_COLOR);  //Draw G# notes
+        //Loop to draw all the notes based on the show conditions
 
-        //repaint();
+        for (int i = 0; i < NOTE_NAMES.length;i++) {
+            if (showNotesControl[i]) {
+                addNotesToFretboard(ALL_NOTE_LOCATIONS[i], g, NOTE_NAMES[i], BUTTON_COLORS[i]);
+            } else {
+                addNotesToFretboard(ALL_NOTE_LOCATIONS[i], g, NOTE_NAMES[i], Color.white);
+            }
+        }
     }
 
     public ArrayList<NoteMarker> addNotesToFretboard(int[][] locations, Graphics g, String noteNames, Color color) {
@@ -244,20 +257,23 @@ public class MyFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == noteButtons.get(A_INDEX)){
-            showANotes = !showANotes;
-            System.out.println(showANotes);
-            repaint();
-//            for (NoteMarker noteMarker : aNoteMarkers) {  //Cannot access aNoteMarkers because it is in the MyFrame Class
-//                noteMarker.setNoteColor(A_COLOR);
-//            }
-//        }
-//        else {
-//            for (NoteMarker noteMarker: aNoteMarkers) {
-//                    noteMarker.disappear();
-//                }
-//            }
-//    }
+        for (int i = 0; i < showNotesControl.length; i ++) {
+
+            if (e.getSource() == noteButtons.get(i)) {
+                showNotesControl[i] = !showNotesControl[i];
+                System.out.println(showNotesControl[i]);
+                repaint();
+            }
         }
+
+        if (e.getSource() == noteButtons.get(CLEAR_INDEX)) {
+            showNotesControl = new boolean[]{false, false, false, false, false, false, false, false, false, false, false, false};
+            repaint();
+        }
+        else if (e.getSource() == noteButtons.get(SHOW_ALL_INDEX)) {
+            showNotesControl = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true};
+            repaint();
+        }
+
     }
 }
