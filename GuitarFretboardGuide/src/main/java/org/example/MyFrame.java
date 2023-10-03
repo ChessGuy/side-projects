@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MyFrame extends JFrame implements ActionListener {
 
@@ -103,7 +104,7 @@ public class MyFrame extends JFrame implements ActionListener {
     //JButton clickToShowA = new JButton();
 
     //Button control to show the notes
-    ArrayList<JButton> noteButtons = new ArrayList<>();
+    List<JButton> noteButtons = new ArrayList<>();
 
     //booleans to control the buttons
 
@@ -230,6 +231,12 @@ public class MyFrame extends JFrame implements ActionListener {
                     FIRST_STRING_LEFT_CORNER_Y + STRING_SPACING * (NUM_OF_STRING - 1));
         }
 
+        //Draw the fret labels (doesn't work)
+
+//        g2.setColor(Color.black);
+//        g2.setFont(new Font("MV Boli", Font.PLAIN, 10));
+//        g2.drawString("0", 200, 200);
+
         //Draw the notes
 
         //Loop to draw all the notes based on the show conditions
@@ -243,8 +250,8 @@ public class MyFrame extends JFrame implements ActionListener {
         }
     }
 
-    public ArrayList<NoteMarker> addNotesToFretboard(int[][] locations, Graphics g, String noteNames, Color color) {
-        ArrayList<NoteMarker> noteMarkers = new ArrayList<>();
+    public List<NoteMarker> addNotesToFretboard(int[][] locations, Graphics g, String noteNames, Color color) {
+        List<NoteMarker> noteMarkers = new ArrayList<>();
         for (int[] loc : locations) {
             NoteMarker note = new NoteMarker(NOTE_RADIUS,
                     loc[0] * FRET_SPACING + FIRST_STRING_LEFT_CORNER_X,
@@ -261,7 +268,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
             if (e.getSource() == noteButtons.get(i)) {
                 showNotesControl[i] = !showNotesControl[i];
-                System.out.println(showNotesControl[i]);
+                //System.out.println(showNotesControl[i]);
                 repaint();
             }
         }
