@@ -28,12 +28,16 @@ public class CardSharks {
     while(!gameOver){
         //Print player bank and cards in play
         Scanner input = new Scanner(System.in);
-        System.out.printf("You have %d in your bank and %d changes left.\n", playerBank, changes);
+        String changeText = "changes";
+        if (changes == 1) {
+            changeText = "change";
+        }
+        System.out.printf("You have %d in your bank and %d %s left.\n", playerBank, changes, changeText);
         if(roundNumber == MAX_ROUND){
             System.out.println("\nFINAL ROUND!  You must bid half of your bank on this flip.  Good Luck!");
         }
         else{
-            System.out.printf("\nLet's start round %d!\n",roundNumber);
+            System.out.printf("\nLet's start Round %d!\n",roundNumber);
         }
         System.out.println("Here is the board of cards:");
     
@@ -92,7 +96,7 @@ public class CardSharks {
 
         if(roundNumber == 4){
             playerBank += addMoney;
-            System.out.println("You have 400 extra in your bank.");
+            System.out.println("You have 400 extra in your bank for making it to Round 4.");
         }   
         
 
@@ -107,8 +111,7 @@ public class CardSharks {
 
         for(int i=0;i<suits; i++){
             for(int n=minValue; n<=maxValue;n++){
-                int newValue = n;
-                deck.add(newValue);
+                deck.add(n);
             }
         }
         Collections.shuffle(deck);
@@ -144,7 +147,7 @@ public class CardSharks {
             playerBank += bid;
             System.out.println("YES! You guessed correctly!  Your bid has been added to your bank.");
         }
-        else if(!didPlayerWin){
+        else {
             playerBank -= bid;
             System.out.println("NO!  Your guess was wrong!  You lose your bid from your bank.");
         }
