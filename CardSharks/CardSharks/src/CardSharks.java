@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class CardSharks {
@@ -18,6 +22,7 @@ public class CardSharks {
     ArrayList<Integer> cardsInPlay = new ArrayList<Integer>();
     ArrayList<Integer> deck = createDeck(SUITS, MIN_VALUE, MAX_VALUE);
 
+
     //Start of first hand
 
     System.out.println("WELCOME TO CARD SHARKS!!");
@@ -32,17 +37,20 @@ public class CardSharks {
         if (changes == 1) {
             changeText = "change";
         }
-        System.out.printf("You have %d in your bank and %d %s left.\n", playerBank, changes, changeText);
+        System.out.printf("You have $%d in your bank and %d %s left.\n", playerBank, changes, changeText);
         if(roundNumber == MAX_ROUND){
-            System.out.println("\nFINAL ROUND!  You must bid half of your bank on this flip.  Good Luck!");
+            int finalBid = playerBank / 2;
+            System.out.printf("\nFINAL ROUND!  You must bid half of your bank ($%d) on this flip.  Good Luck!\n", finalBid);
         }
         else{
             System.out.printf("\nLet's start Round %d!\n",roundNumber);
         }
         System.out.println("Here is the board of cards:");
     
-        //Display board 
-        System.out.println(cardsInPlay);
+        //Display board
+        displayCards(cardsInPlay);
+        System.out.println();
+        //System.out.println(cardsInPlay);
 
         //Ask player if they want to change the current card
         if(changes > 0){
@@ -58,7 +66,8 @@ public class CardSharks {
         if(playerChoice.equals("CHANGE")){
             System.out.println("You have chosen to change your card.  Here is your new board:");
             replaceCard(cardsInPlay, deck, roundNumber - 1);
-            System.out.println(cardsInPlay);
+            displayCards(cardsInPlay);
+            System.out.println();
             changes--;
         }
     
@@ -80,7 +89,7 @@ public class CardSharks {
         playerBank = playRound(cardsInPlay.get(roundNumber - 1), cardsInPlay.get(roundNumber), bid, playerBank, playerChoice);
         //Increment round and resolve new money and game over conditions 
         if(roundNumber == MAX_ROUND){
-            gameOver = gameOver(gameOver, playerBank);
+            gameOver = gameOver(gameOver, playerBank, input);
         }
 
         roundNumber++;
@@ -90,13 +99,13 @@ public class CardSharks {
                 System.out.println("You have busted before the 3rd round.");
                 roundNumber = 4;
             } else if (roundNumber < MAX_ROUND) {
-                gameOver = gameOver(gameOver, playerBank);
+                gameOver = gameOver(gameOver, playerBank, input);
             }
         }
 
         if(roundNumber == 4){
             playerBank += addMoney;
-            System.out.println("You have 400 extra in your bank for making it to Round 4.");
+            System.out.println("You have earned an extra $400 in your bank for making it to Round 4.");
         }   
         
 
@@ -156,26 +165,76 @@ public class CardSharks {
         }
         public static int takeBid(Scanner input, int playerBank, int round, int MAX_ROUND){
             int bid = 0;
-            System.out.println("What would you like to bid (Increments of 50)?");
+            int finalBid = playerBank / 2;
+            System.out.printf("You have $%d in your bank.  What would you like to bid (Increments of $50)?\n", playerBank);
             bid = input.nextInt();
 
             while(bid > playerBank || bid % 50 != 0 ){
                 System.out.println("Invalid bid. Please try again.");
-                System.out.println("What would you like to bid (Increments of 50)?");
+                System.out.println("What would you like to bid (Increments of $50)?");
                 bid = input.nextInt();
             }
             while(round == MAX_ROUND && (bid < (playerBank/2))){
-                System.out.println("You must bid at least half of your bank.");
-                System.out.println("What would you like to bid (Increments of 50)?");
+                System.out.printf("You must bid at least half of your bank ($%d).\n", finalBid);
+                System.out.println("What would you like to bid (Increments of $50)?");
                 bid = input.nextInt();
             }
         return bid;
         
         }
-        public static boolean gameOver(boolean gameOver, int playerBank){
+        public static boolean gameOver(boolean gameOver, int playerBank, Scanner scanner){
+
+            String highScoreFilePath = "CardSharks/CardSharks/src/high-scores.txt";
+            File highScoreFile = new File(highScoreFilePath);
             gameOver = true;
-            System.out.printf("\nGame Over. Your final bank is %d.", playerBank);
+            System.out.printf("\nGame Over. Your final bank is $%d.", playerBank);
+
+            //Record high scores
+            String userchoice = "";
+            if (playerBank > 0) {
+                do {
+                    System.out.println("Would you like to record your score? (y/n)");
+                    userchoice = scanner.nextLine().toLowerCase();
+
+                    if (userchoice.equals("y")) {
+                        System.out.println("What is your first name?");
+                        String userFirstName = scanner.nextLine();
+                        System.out.println("What is your last name?");
+                        String userLastName = scanner.nextLine();
+
+                        Player newPlayer = new Player(userFirstName, userLastName, playerBank);
+
+                        try (PrintWriter log = new PrintWriter(new FileOutputStream(highScoreFile, true))) {
+                            log.println(newPlayer);
+                        } catch (FileNotFoundException e) {
+                            System.out.println("*** Unable to open log file: " + highScoreFile.getAbsolutePath());
+                        }
+
+                        System.out.println("Your score has been recorded.  Thanks for playing!");
+                    } else if (userchoice.equals("n")) {
+                        System.out.println("Your score will not be recorded.  Thanks for playing!");
+                    } else {
+                        System.out.println("Invalid choice.  Please try again.");
+                    }
+                } while (!userchoice.equals("y") && !userchoice.equals("n"));
+            }
             return gameOver;
+        }
+
+        public static void displayCards (List<Integer> cards) {
+            for (Integer card: cards) {
+                if (card == 14) {
+                    System.out.print("A\t");
+                } else if (card == 13) {
+                    System.out.print("K\t");
+                } else if (card == 12) {
+                    System.out.print("Q\t");
+                } else if (card == 11) {
+                    System.out.print("J\t");
+                } else {
+                    System.out.print(card + "\t");
+                }
+            }
         }
 
             

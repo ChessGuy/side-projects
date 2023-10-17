@@ -149,6 +149,18 @@ public class MyFrame extends JFrame implements ActionListener {
         //title.setBounds(0,0,50, 50);
         this.add(title);
 
+        //Add Fret Labels
+
+//        JLabel fret0 = new JLabel(); //Create a label
+//
+//        fret0.setText("0"); // Set text of label
+//        //fret0.setVerticalAlignment(JLabel.TOP);
+//        //fret0.setHorizontalAlignment(JLabel.CENTER);
+//        fret0.setForeground(TITLE_COLOR); //set text color
+//        fret0.setFont(TITLE_FONT); //set font of text
+//        fret0.setLocation(300, 300);
+//        this.add(fret0);
+
         //JPanel for Buttons
 
         JPanel buttonPanel = new JPanel();
@@ -244,7 +256,8 @@ public class MyFrame extends JFrame implements ActionListener {
         for (int i = 0; i < NOTE_NAMES.length;i++) {
             if (showNotesControl[i]) {
                 addNotesToFretboard(ALL_NOTE_LOCATIONS[i], g, NOTE_NAMES[i], BUTTON_COLORS[i]);
-            } else {
+            }
+            else {
                 addNotesToFretboard(ALL_NOTE_LOCATIONS[i], g, NOTE_NAMES[i], Color.white);
             }
         }
