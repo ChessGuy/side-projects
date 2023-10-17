@@ -13,6 +13,6 @@ public class Player {
     }
 
     public String toString() {
-        return firstName +  " " + lastName + "\t\t\t$" + score + "\t\t\t" + new Date();
+        return firstName +  " " + lastName + "\t\t\tScore: $" + score + "\t\t\t" + new Date();
     }
 }
