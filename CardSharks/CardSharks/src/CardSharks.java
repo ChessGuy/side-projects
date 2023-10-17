@@ -213,7 +213,7 @@ public class CardSharks {
 
                 try (PrintWriter log = new PrintWriter(new FileOutputStream(highScoreFile, true))) {
                     log.println(newPlayer);
-                    System.out.println("Your score $" + playerBank + " has been recorded.  Thanks for playing!");
+                    System.out.println("Your score of $" + playerBank + " has been recorded.  Thanks for playing!");
                 } catch (FileNotFoundException e) {
                     System.out.println("*** Unable to open log file: " + highScoreFile.getAbsolutePath());
                 }
