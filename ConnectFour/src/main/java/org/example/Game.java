@@ -8,12 +8,23 @@ public class Game {
 
     private final int ROWS = 6;
     private final int COLUMNS = 7;
-    private final int BLANK = 0;
+    //private final int BLANK = 0;
     private final int PLAYER1 = 1;
     private final int PLAYER2 = 2;
     private boolean isPlayer1Turn;
+    private boolean isGameOver = false;
 
     private int[][] board = new int[ROWS][COLUMNS];
+
+    public Game () {
+        chooseFirstPlayer();
+
+        while (!isGameOver) {
+            displayBoard();
+            playPiece();
+        }
+
+    }
 
     public void setPlayer1Turn(boolean player1Turn) {
         isPlayer1Turn = player1Turn;
@@ -67,11 +78,12 @@ public class Game {
                     !selectedColString.equals("7")) {
                 System.out.println("Invalid choice.  Please try again");
             } else {
-                int selectedCol = Integer.parseInt(selectedColString);
+                int selectedCol = Integer.parseInt(selectedColString) - 1;
                 boolean isFreeSpace = false;
                 for (int i = 0; i < ROWS; i++) {
                     if (board[i][selectedCol] == 0) {
                         isFreeSpace = true;
+                        break;
                     }
                 }
                 if (isFreeSpace) {
@@ -85,6 +97,79 @@ public class Game {
         return Integer.parseInt(selectedColString);
     }
     public void playPiece () {
-        return;
+        int playerChoice = playerColChoice() - 1;
+        int playerPiece = PLAYER1;
+
+        if(!isPlayer1Turn) {
+            playerPiece = PLAYER2;
+        }
+
+        for (int i = 0; i < ROWS; i++) {
+            if (board[i][playerChoice] != 0) {
+                board[i - 1][playerChoice] = playerPiece;
+                break;
+            } else if (i == ROWS - 1) {
+                board[ROWS - 1][playerChoice] = playerPiece;
+            }
+        }
+        checkForGameOver();
+        isPlayer1Turn = !isPlayer1Turn;
+    }
+
+    public void checkForGameOver () {
+        //Check for full board
+        boolean isBoardFull = true;
+        int playerPiece = PLAYER1;
+
+        if (!isPlayer1Turn) {
+            playerPiece = PLAYER2;
+        }
+
+        for (int i = 0; i < ROWS;i ++) {
+            for (int n = 0; n < COLUMNS;n++) {
+                if (board[i][n] == 0) {
+                    isBoardFull = false;
+                }
+            }
+        }
+        if (isBoardFull) {
+            displayBoard();  //Show that the board is full
+            System.out.println("Board is full.  The game ends in a tie!");
+            isGameOver = true;
+        }
+
+        //Check for horizontal Victory
+
+        for (int i = 0; i < ROWS;i ++) {
+            for (int n = 0; n < COLUMNS - 3;n++) {
+                if (board[i][n] == playerPiece &&
+                        board[i][n + 1] == playerPiece &&
+                        board[i][n + 2] == playerPiece &&
+                        board[i][n + 3] == playerPiece) {
+                    displayBoard(); //Show that Player won
+                    System.out.println("Game Over.  Player " + playerPiece + " wins!");
+                    isGameOver = true;
+                    }
+                }
+            }
+
+        //Check for Vertical Victory
+        for (int i = 0; i < ROWS - 3;i ++) {
+            for (int n = 0; n < COLUMNS;n++) {
+                if (board[i][n] == playerPiece &&
+                        board[i + 1][n] == playerPiece &&
+                        board[i + 2][n] == playerPiece &&
+                        board[i + 3][n] == playerPiece) {
+                    displayBoard(); //Show that Player won
+                    System.out.println("Game Over.  Player " + playerPiece + " wins!");
+                    isGameOver = true;
+                }
+            }
+        }
+        //Check for diagonal down victory
+
+        //Check for diagonal up victory
+
+
     }
 }
