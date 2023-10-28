@@ -153,7 +153,7 @@ public class Game {
                 }
             }
 
-        //Check for Vertical Victory
+        //Check for vertical Victory
         for (int i = 0; i < ROWS - 3;i ++) {
             for (int n = 0; n < COLUMNS;n++) {
                 if (board[i][n] == playerPiece &&
@@ -167,9 +167,32 @@ public class Game {
             }
         }
         //Check for diagonal down victory
+        for (int i = 0; i < ROWS - 3;i ++) {
+            for (int n = 0; n < COLUMNS - 3;n++) {
+                if (board[i][n] == playerPiece &&
+                        board[i + 1][n + 1] == playerPiece &&
+                        board[i + 2][n + 2] == playerPiece &&
+                        board[i + 3][n + 3] == playerPiece) {
+                    displayBoard(); //Show that Player won
+                    System.out.println("Game Over.  Player " + playerPiece + " wins!");
+                    isGameOver = true;
+                }
+            }
+        }
 
         //Check for diagonal up victory
-
+        for (int i = 2; i < ROWS;i ++) {
+            for (int n = 0; n < COLUMNS - 3;n++) {
+                if (board[i][n] == playerPiece &&
+                        board[i - 1][n + 1] == playerPiece &&
+                        board[i - 2][n + 2] == playerPiece &&
+                        board[i - 3][n + 3] == playerPiece) {
+                    displayBoard(); //Show that Player won
+                    System.out.println("Game Over.  Player " + playerPiece + " wins!");
+                    isGameOver = true;
+                }
+            }
+        }
 
     }
 }
