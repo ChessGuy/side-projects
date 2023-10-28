@@ -31,9 +31,9 @@ public class Game {
     }
 
     public void displayBoard() {
-        System.out.println("CURRENT BOARD       ");
+        System.out.println("    CURRENT BOARD   ");
         System.out.println();
-        System.out.println("Choice of Columns:  ");
+        System.out.println("  Choice of Columns:");
         System.out.println(" 1  2  3  4  5  6  7");
         System.out.println("____________________");
         for (int i = 0; i < ROWS; i++) {
