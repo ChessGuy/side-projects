@@ -47,11 +47,7 @@ public class Game {
 
         int randomInt = random.nextInt(0, 2);
 
-        if (randomInt == 0) {
-            setPlayer1Turn(true);
-        } else {
-            setPlayer1Turn(false);
-        }
+        setPlayer1Turn(randomInt == 0);
     }
 
     public int playerColChoice () {
@@ -125,6 +121,7 @@ public class Game {
             playerPiece = PLAYER2;
         }
 
+        //Check for full board
         for (int i = 0; i < ROWS;i ++) {
             for (int n = 0; n < COLUMNS;n++) {
                 if (board[i][n] == 0) {
