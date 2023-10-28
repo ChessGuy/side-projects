@@ -27,7 +27,7 @@ public class CardSharks {
         System.out.println("********************************");
         System.out.println("*** WELCOME TO CARD SHARKS!! ***");
         System.out.println("********************************");
-        cardsInPlay = drawCard(cardsInPlay, deck);
+        drawCard(cardsInPlay, deck);
 
         //Start of game loop
 
@@ -126,18 +126,16 @@ public class CardSharks {
         return deck;
     }
 
-    public static ArrayList<Integer> drawCard(ArrayList<Integer> cardsInPlay, ArrayList<Integer> deck) {
+    public static void drawCard(ArrayList<Integer> cardsInPlay, ArrayList<Integer> deck) {
         Random rand = new Random();
         int randIndex = rand.nextInt(0, (deck.size() - 1));
         cardsInPlay.add(deck.remove(randIndex));
-        return cardsInPlay;
     }
 
-    public static ArrayList<Integer> replaceCard(ArrayList<Integer> cardsInPlay, ArrayList<Integer> deck, int index) {
+    public static void replaceCard(ArrayList<Integer> cardsInPlay, ArrayList<Integer> deck, int index) {
         Random rand = new Random();
         int randIndex = rand.nextInt(0, (deck.size() - 1));
         cardsInPlay.set(index, deck.remove(randIndex));
-        return cardsInPlay;
     }
 
     public static int playRound(int card1, int card2, int bid, int playerBank, String playerChoice) {
