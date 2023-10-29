@@ -27,6 +27,7 @@ public class Game {
     }
     public Game (int[][] board) { // for testing only
         this.board = board;
+        this.isGameOver = false;
     }
 
     public boolean isGameOver() {
@@ -221,7 +222,7 @@ public class Game {
         }
 
         //Check for diagonal up victory
-        for (int i = 2; i < ROWS;i ++) {
+        for (int i = 2; i < ROWS;i++) {
             for (int n = 0; n < COLUMNS - 3;n++) {
                 if (board[i][n] == playerPiece &&
                         board[i - 1][n + 1] == playerPiece &&
