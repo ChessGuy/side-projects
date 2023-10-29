@@ -31,13 +31,20 @@ public class Game {
     }
 
     public void displayBoard() {
-        System.out.println("    CURRENT BOARD   ");
+        System.out.println("     ***CURRENT BOARD***   ");
         System.out.println();
-        System.out.println("  Choice of Columns:");
-        System.out.println(" 1  2  3  4  5  6  7");
-        System.out.println("____________________");
+        System.out.println("     Choice of Columns:");
+        System.out.println("  1   2   3   4   5   6   7");
+        System.out.println("_____________________________");
         for (int i = 0; i < ROWS; i++) {
-            System.out.println((Arrays.toString(board[i])));
+            System.out.println("| " + board[i][0] + " | "
+                    + board[i][1] + " | "
+                    + board[i][2] + " | "
+                    + board[i][3] + " | "
+                    + board[i][4] + " | "
+                    + board[i][5] + " | "
+                    + board[i][6] + " | ");
+            System.out.println("-----------------------------");
         }
         System.out.println();
     }
