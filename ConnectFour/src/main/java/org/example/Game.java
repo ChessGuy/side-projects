@@ -25,6 +25,21 @@ public class Game {
         }
 
     }
+    public Game (int[][] board) { // for testing only
+        this.board = board;
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
 
     public void setPlayer1Turn(boolean player1Turn) {
         isPlayer1Turn = player1Turn;
@@ -119,6 +134,26 @@ public class Game {
         isPlayer1Turn = !isPlayer1Turn;
     }
 
+    public void playPiece (int selectedCol) { // used for testing only
+        int playerChoice = selectedCol - 1;
+        int playerPiece = PLAYER1;
+
+        if(!isPlayer1Turn) {
+            playerPiece = PLAYER2;
+        }
+
+        for (int i = 0; i < ROWS; i++) {
+            if (board[i][playerChoice] != 0) {
+                board[i - 1][playerChoice] = playerPiece;
+                break;
+            } else if (i == ROWS - 1) {
+                board[ROWS - 1][playerChoice] = playerPiece;
+            }
+        }
+        checkForGameOver();
+        isPlayer1Turn = !isPlayer1Turn;
+    }
+
     public void checkForGameOver () {
         //Check for full board
         boolean isBoardFull = true;
@@ -133,6 +168,7 @@ public class Game {
             for (int n = 0; n < COLUMNS;n++) {
                 if (board[i][n] == 0) {
                     isBoardFull = false;
+                    break;
                 }
             }
         }
