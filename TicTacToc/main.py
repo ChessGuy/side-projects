@@ -24,6 +24,8 @@ screen.tracer(0)
 
 draw = Draw()
 draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
+draw.draw_circle((0, -60))
+draw.draw_ex((0, -60))
 
 game = Game()
 
