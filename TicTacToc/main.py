@@ -7,6 +7,7 @@ from draw import Draw
 WIDTH = 500
 TEXT_BOX = 50
 HEIGHT = WIDTH + TEXT_BOX
+PIECE_SPACING = 50
 SPACING = WIDTH / 3
 CENTER_OF_BOARD = (HEIGHT - TEXT_BOX) / 2
 
@@ -22,12 +23,12 @@ screen.tracer(0)
 
 # Draw the board
 
+game = Game()
+game.board = [[1, 1, 2], [2, 1, 1], [2, 2, 1]]
+
 draw = Draw()
 draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
-draw.draw_circle((0, -60))
-draw.draw_ex((0, -60))
-
-game = Game()
+draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
 
 screen.update()
 screen.exitonclick()
