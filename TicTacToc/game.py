@@ -1,5 +1,6 @@
-import numpy as np
+import random
 
+import numpy as np
 
 class Game:
 
@@ -7,12 +8,21 @@ class Game:
         self.board = np.zeros([3, 3])
         self.player_1 = 1
         self.player_2 = 2
+        self.player_turn = 0
         self.game_over = False
         self.winner = 0
         self.full_board = False
 
+    def choose_first_player (self):
+        rand_num = random.randint(1, 2)
+        if rand_num == 1:
+            self.player_turn = 1
+        else:
+            self.player_turn = 2
+
     def play_piece(self, player, location):
         self.board[location] = player
+
 
     def check_wins(self, player):
         board_state = self.board

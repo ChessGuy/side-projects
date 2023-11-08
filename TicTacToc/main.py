@@ -4,6 +4,9 @@ from draw import Draw
 
 # Constants
 
+def print_click (x, y):
+    print(x, y)
+
 WIDTH = 500
 TEXT_BOX = 50
 HEIGHT = WIDTH + TEXT_BOX
@@ -21,15 +24,21 @@ screen.bgcolor('black')
 screen.title('Tic Tac Toe')
 screen.tracer(0)
 
+screen.onscreenclick(print_click, 1)
+screen.listen()
+
 # Draw the board
 
 game = Game()
+game.choose_first_player()
+print(game.player_turn)
 game.board = [[1, 1, 2], [2, 1, 1], [2, 2, 1]]
 
 draw = Draw()
 draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
 draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
 
+screen.mainloop()
 screen.update()
 screen.exitonclick()
 

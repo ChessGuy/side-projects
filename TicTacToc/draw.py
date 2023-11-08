@@ -66,6 +66,9 @@ class Draw(Turtle):
         # self.goto(width / 2, text_bar_height)
         # self.penup()
 
+        # Draw Text at top of board
+
+
     def draw_circle(self, location):
         circle = Turtle()
         circle.color('red')
