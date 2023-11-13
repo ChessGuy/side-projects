@@ -26,6 +26,19 @@ class Game:
 
     def check_wins(self, player):
         board_state = self.board
+
+        # Check for full board
+        for row in range(0, len(self.board)):
+            for col in range(0, len(self.board)):
+                if board_state[row][col] != 0:
+                    self.full_board = True
+                else:
+                    self.full_board = False
+
+        if self.full_board:
+            self.game_over = True
+            self.winner = 0;
+
         # Check for vertical wins
         for col in range(0, len(self.board)):
             if board_state[0][col] == player and board_state[1][col] == player and board_state[2][col] == player:
@@ -48,14 +61,5 @@ class Game:
             self.game_over = True
             self.winner = player
 
-        # Check for full board
-        for row in range(0, len(self.board)):
-            for col in range (0, len(self.board)):
-                if board_state[row][col] != 0:
-                    self.full_board = True
-                else:
-                    self.full_board = False
 
-        if self.full_board:
-            self.game_over = True
 

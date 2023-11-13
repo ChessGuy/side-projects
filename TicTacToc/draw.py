@@ -66,9 +66,25 @@ class Draw(Turtle):
         # self.goto(width / 2, text_bar_height)
         # self.penup()
 
+    def draw_text(self, player1, player2, player_turn, game_over, winner):
         # Draw Text at top of board
-
-
+        self.goto(-225, 210)
+        if player_turn == player1:
+            self.color('blue')
+        else:
+            self.color('red')
+        if game_over:
+            self.color('gray')
+            if winner == player1:
+                self.write("Player 'X' wins!", font=("Arial", 45, "bold"))
+            elif winner == player2:
+                self.write("Player 'O' wins!", font=("Arial", 45, "bold"))
+            else:
+                self.write("Game Ends In Tie!", font=("Arial", 40, "bold"))
+        elif player_turn == player1:
+            self.write("Player 'X' Turn", font=("Arial", 45, "bold"))
+        else:
+            self.write("Player 'O' Turn", font=("Arial", 45, "bold"))
     def draw_circle(self, location):
         circle = Turtle()
         circle.color('red')

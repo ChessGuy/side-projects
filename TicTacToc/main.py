@@ -2,10 +2,16 @@ from game import Game
 from turtle import Screen, Turtle
 from draw import Draw
 
-# Constants
+
 
 def print_click (x, y):
+    # function to find and print the x, y coordinates of the mouse click location on the console
     print(x, y)
+
+def receive_moves_from_click (x, y):
+    pass
+
+# Constants
 
 WIDTH = 500
 TEXT_BOX = 50
@@ -31,12 +37,17 @@ screen.listen()
 
 game = Game()
 game.choose_first_player()
-print(game.player_turn)
+game.player_turn = 1
 game.board = [[1, 1, 2], [2, 1, 1], [2, 2, 1]]
+game.check_wins(1)
+print(game.winner)
 
 draw = Draw()
 draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
 draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
+draw.draw_text(game.player_1, game.player_2, game.player_turn, game.game_over, game.winner)
+
+# Main Game Loop
 
 screen.mainloop()
 screen.update()
