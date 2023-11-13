@@ -67,7 +67,17 @@ class Draw(Turtle):
         # self.penup()
 
     def draw_text(self, player1, player2, player_turn, game_over, winner):
+
+        # Clear existing text
+        self.color('black')
+        self.pensize('60')
+        self.goto(-246, 240)
+        self.pendown()
+        self.goto(232, 240)
+        self.penup()
+        self.pensize('5')
         # Draw Text at top of board
+
         self.goto(-225, 210)
         if player_turn == player1:
             self.color('blue')

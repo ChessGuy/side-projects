@@ -6,8 +6,8 @@ class Game:
 
     def __init__(self):
         self.board = np.zeros([3, 3])
-        self.player_1 = 1
-        self.player_2 = 2
+        self.player1 = 1
+        self.player2 = 2
         self.player_turn = 0
         self.game_over = False
         self.winner = 0
@@ -21,9 +21,14 @@ class Game:
             self.player_turn = 2
 
     def play_piece(self, player, location):
-        self.board[location] = player
+        if self.board[location] == 0:
+            self.board[location] = player
 
-
+    def change_player_turn(self):
+        if self.player_turn == self.player1:
+            self.player_turn = self.player2
+        else:
+            self.player_turn = self.player1
     def check_wins(self, player):
         board_state = self.board
 

@@ -3,13 +3,24 @@ from turtle import Screen, Turtle
 from draw import Draw
 
 
-
-def print_click (x, y):
+def print_click(x, y):
     # function to find and print the x, y coordinates of the mouse click location on the console
     print(x, y)
 
-def receive_moves_from_click (x, y):
-    pass
+
+def receive_moves_from_click(x, y):
+    if x > -246 and x < -92 and y > 51 and y < 194:
+        game.play_piece(game.player_turn, (0, 0))
+        print("it works")
+
+    draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
+    draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
+    draw.draw_text(game.player1, game.player2, game.player_turn, game.game_over, game.winner)
+    print(game.board)
+    game.check_wins(game.player_turn)
+    print(game.game_over)
+    game.change_player_turn()
+
 
 # Constants
 
@@ -37,23 +48,26 @@ screen.listen()
 
 game = Game()
 game.choose_first_player()
-game.player_turn = 1
-game.board = [[1, 1, 2], [2, 1, 1], [2, 2, 1]]
-game.check_wins(1)
-print(game.winner)
+# game.player_turn = 1
+# game.board = [[1, 1, 2], [2, 1, 1], [2, 2, 1]]
+# game.check_wins(game.player_turn)
+# print(game.winner)
 
 draw = Draw()
 draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
 draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
-draw.draw_text(game.player_1, game.player_2, game.player_turn, game.game_over, game.winner)
+draw.draw_text(game.player1, game.player2, game.player_turn, game.game_over, game.winner)
 
 # Main Game Loop
 
+# while not game.game_over:
+#     draw.draw_board(WIDTH, HEIGHT, TEXT_BOX, SPACING)
+#     draw.draw_pieces(HEIGHT, WIDTH, TEXT_BOX, PIECE_SPACING, game.board)
+#     draw.draw_text(game.player1, game.player2, game.player_turn, game.game_over, game.winner)
+#
+#     screen.onclick(receive_moves_from_click, 1)
+#     screen.update()
+
 screen.mainloop()
-screen.update()
+# screen.update()
 screen.exitonclick()
-
-
-
-
-
