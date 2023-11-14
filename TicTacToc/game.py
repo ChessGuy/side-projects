@@ -23,22 +23,27 @@ class Game:
     def play_piece(self, player, location):
         if self.board[location] == 0:
             self.board[location] = player
+            return True
+        else:
+            return False
 
     def change_player_turn(self):
         if self.player_turn == self.player1:
             self.player_turn = self.player2
-        else:
+        elif self.player_turn == self.player2:
             self.player_turn = self.player1
     def check_wins(self, player):
         board_state = self.board
 
         # Check for full board
+        full_spaces = 0;
         for row in range(0, len(self.board)):
             for col in range(0, len(self.board)):
                 if board_state[row][col] != 0:
-                    self.full_board = True
-                else:
-                    self.full_board = False
+                    full_spaces += 1;
+
+        if full_spaces == 9:
+            self.full_board = True
 
         if self.full_board:
             self.game_over = True
