@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8626dfc4-ab56-4633-b82e-9fa688d9c5e3" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Xai6WL35TjsqXl4cVsJpz4R8Xf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ejb51/PycharmProjects/SnakeGame&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ejb51\workspace\side-projects\TicTacToc" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Python tests for test_game.TestGame.test_first_col_win" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="side-projects" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TicTacToc" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_game.TestGame.test_first_col_win&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_game.TestGame.test_first_col_win" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8626dfc4-ab56-4633-b82e-9fa688d9c5e3" name="Changes" comment="" />
+      <created>1698873416396</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698873416396</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Adding python project first commit">
+      <option name="closed" value="true" />
+      <created>1698948916047</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698948916047</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Adding python project first commit">
+      <option name="closed" value="true" />
+      <created>1698949551010</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698949551010</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding python project first commit">
+      <option name="closed" value="true" />
+      <created>1698949994681</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698949994681</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Completed test_game class">
+      <option name="closed" value="true" />
+      <created>1699031315228</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699031315228</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added full board check to game and test_game.  Started the draw class.">
+      <option name="closed" value="true" />
+      <created>1699060632822</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699060632822</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Working on draw circle and ex methods">
+      <option name="closed" value="true" />
+      <created>1699285406886</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699285406886</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Working on drawing pieces on the board">
+      <option name="closed" value="true" />
+      <created>1699369071697</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699369071697</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Working on drawing the message on the top of the screen">
+      <option name="closed" value="true" />
+      <created>1699483871295</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699483871295</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Working on text drawing and mouse click functionality">
+      <option name="closed" value="true" />
+      <created>1699890755903</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699890755903</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Working through mouse click function and main game loop">
+      <option name="closed" value="true" />
+      <created>1699893986373</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699893986373</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Completed the project">
+      <option name="closed" value="true" />
+      <created>1699976389241</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699976389241</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding python project first commit" />
+    <MESSAGE value="Completed test_game class" />
+    <MESSAGE value="Added full board check to game and test_game.  Started the draw class." />
+    <MESSAGE value="Working on draw circle and ex methods" />
+    <MESSAGE value="Working on drawing pieces on the board" />
+    <MESSAGE value="Working on drawing the message on the top of the screen" />
+    <MESSAGE value="Working on text drawing and mouse click functionality" />
+    <MESSAGE value="Working through mouse click function and main game loop" />
+    <MESSAGE value="Completed the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed the project" />
+  </component>
+</project>
