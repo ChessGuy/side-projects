@@ -6,14 +6,14 @@ DROP TABLE IF EXISTS composer, genre, collection, genre_piece, composer_piece, p
 -- CREATE DATABASE TABLES
 -- **********************
 
--- Create Collection Table
+-- Create collection Table
 CREATE TABLE collection (
 	collection_id serial NOT NULL,
 	collection_name VARCHAR (100),
 	CONSTRAINT PK_collection PRIMARY KEY (collection_id)
 );
 
--- Create Piece Table
+-- Create piece Table
 CREATE TABLE piece (
 	piece_id serial NOT NULL,
     collection_id integer,
@@ -23,14 +23,14 @@ CREATE TABLE piece (
 	CONSTRAINT FK_collection FOREIGN KEY (collection_id) REFERENCES collection (collection_id)
 );
 
--- Create Genre Table
+-- Create genre Table
 CREATE TABLE genre (
 	genre_id serial NOT NULL,
     genre_name VARCHAR (100) NOT NULL,
     CONSTRAINT PK_genre PRIMARY KEY (genre_id)
 );
 
--- Create Composer Table
+-- Create composer Table
 CREATE TABLE composer (
 	composer_id serial NOT NULL,
     composer_name VARCHAR (200) NOT NULL,
@@ -55,6 +55,24 @@ CREATE TABLE genre_piece (
 	CONSTRAINT FK_genre FOREIGN KEY (genre_id) REFERENCES genre (genre_id),
 	CONSTRAINT FK_piece FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
 );
+
+-- **********************
+-- POPULATE TABLES
+-- **********************
+
+-- Populate collection table
+
+INSERT INTO collection (collection_name)
+VALUES 
+	('Evanescence'), 
+	('Solo Piano'),
+	('Final Fantasy Music'),
+	('Kingdom Hearts Music');
+	
+-- Populate piece table
+
+	
+	
 
 
 
