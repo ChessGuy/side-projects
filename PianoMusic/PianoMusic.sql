@@ -61,7 +61,6 @@ CREATE TABLE genre_piece (
 -- **********************
 
 -- Populate collection table
-
 INSERT INTO collection (collection_name)
 VALUES 
 	('Evanescence'), 
@@ -70,7 +69,26 @@ VALUES
 	('Kingdom Hearts Music');
 	
 -- Populate piece table
-
+INSERT INTO piece (collection_id, piece_name, published_year)
+VALUES 
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Moonlight Sonata', 1801),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Fur Elise', 1810),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Final Fantasy Music'), 'Tifa Theme', 1997),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Final Fantasy Music'), 'A Place to Call Home', 2000),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	
 	
 	
 
