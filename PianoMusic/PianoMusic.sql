@@ -109,11 +109,56 @@ VALUES
 	('Yoko Shimomura', '1967-10-19', NULL, 'https://yokoshimomura.com/'), 
 	('Brian Crain', '1961-8-28', NULL, 'https://www.briancrain.com/'), 
 	('Masashi Hamauzu', '1971-9-10', NULL, 'http://www.masashihamauzu.com/');
-	
+
+-- Populate genre_piece table
+INSERT INTO genre_piece (genre_id, piece_id)
+VALUES 
+	(1, 1),
+	(2, 2),
+	(2, 3),
+	(3, 4),
+	(3, 5),
+	(4, 6),
+	(3, 7),
+	(2, 8),
+	(2, 9),
+	(4, 10),
+	(1, 11),
+	(3, 12),
+	(4, 13),
+	(4, 14),
+	(4, 15),
+	(4, 16),
+	(3, 17);
+
+-- Populate composer_piece table
+INSERT INTO composer_piece (composer_id, piece_id)
+VALUES 
+	(1, 1),
+	(2, 2),
+	(2, 3),
+	(4, 4),
+	(4, 5),
+	(5, 6),
+	(7, 7),
+	(6, 8),
+	(6, 9),
+	(5, 10),
+	(1, 11),
+	(7, 12),
+	(3, 13),
+	(3, 14),
+	(8, 15),
+	(8, 16),
+	(9, 17);
+
 -- **********************
 -- SAMPLE SQL QUERIES
 -- **********************
 
+SELECT *
+FROM piece
+JOIN genre_piece ON piece.piece_id = genre_piece.piece_id;
 
 
 
