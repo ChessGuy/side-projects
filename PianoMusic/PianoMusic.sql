@@ -76,21 +76,44 @@ VALUES
 	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Fur Elise', 1810),
 	((SELECT collection_id FROM collection WHERE collection_name = 'Final Fantasy Music'), 'Tifa Theme', 1997),
 	((SELECT collection_id FROM collection WHERE collection_name = 'Final Fantasy Music'), 'A Place to Call Home', 2000),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
-	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'My Imortal', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'River Flows in You', 2011),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Kingdom Hearts Music'), 'Dearly Beloved', 2002),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Piano Sonata No. 11 in A Major, K.', 1783),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Piano Sonata No. 18 in D Major, K. ', 1789),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Indigo', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Evanescence'), 'Your Star', 2006),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Kingdom Hearts Music'), 'Lazy Afternoons', 2005),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Kai Forest', 2022),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Room at the Bottom', 2010),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'Moonlit Shore', 2011),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Solo Piano'), 'The Secret Letter', 2003),
+	((SELECT collection_id FROM collection WHERE collection_name = 'Final Fantasy Music'), 'Lightning Theme', 2009);
 	
+-- Populate genre table
+INSERT INTO genre (genre_name)
+VALUES 
+	('Alt Rock'), 
+	('Classical'),
+	('Soundtrack'),
+	('New Age');
+
+-- Populate composer table
+INSERT INTO composer (composer_name, birthday, deathday, home_page)
+VALUES 
+	('Amy Lee', '1981-12-13', NULL, 'https://amyleeofficial.com/'), 
+	('Ludwig Van Beethoven', '1770-12-17', '1827-3-26', NULL), 
+	('George Winston', '1949-2-11', '2023-6-4', 'https://www.georgewinston.com/'), 
+	('Nobuo Uematsu', '1959-3-21', NULL, NULL), 
+	('Yiruma', '1978-2-15', NULL, 'http://yiruma.com/'),
+	('Wolfgang Amedeus Mozart', '1756-1-27', '1791-12-5', NULL), 
+	('Yoko Shimomura', '1967-10-19', NULL, 'https://yokoshimomura.com/'), 
+	('Brian Crain', '1961-8-28', NULL, 'https://www.briancrain.com/'), 
+	('Masashi Hamauzu', '1971-9-10', NULL, 'http://www.masashihamauzu.com/');
 	
-	
+-- **********************
+-- SAMPLE SQL QUERIES
+-- **********************
+
 
 
 
