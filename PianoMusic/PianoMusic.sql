@@ -156,9 +156,66 @@ VALUES
 -- SAMPLE SQL QUERIES
 -- **********************
 
-SELECT *
+-- Count of pieces in each collection
+
+SELECT COUNT(piece_id) AS number_of_pieces, collection_name
 FROM piece
-JOIN genre_piece ON piece.piece_id = genre_piece.piece_id;
+JOIN collection ON collection.collection_id = piece.collection_id
+GROUP BY collection_name
+ORDER BY number_of_pieces DESC;
+
+-- Count of pieces in each genre
+
+SELECT COUNT (piece.piece_id) AS number_of_pieces, genre_name
+FROM piece
+JOIN genre_piece ON genre_piece.piece_id = piece.piece_id
+JOIN genre ON genre.genre_id = genre_piece.genre_id
+GROUP BY genre_name
+ORDER BY number_of_pieces DESC;
+
+-- List the pieces in the Solo Piano collection
+
+SELECT piece_name, composer_name, published_year
+FROM piece
+JOIN composer_piece ON composer_piece.piece_id = piece.piece_id
+JOIN composer ON composer_piece.composer_id = composer.composer_id
+JOIN collection ON collection.collection_id = piece.collection_id
+WHERE collection_name = 'Solo Piano'
+ORDER BY piece_name ASC;
+
+-- List the pieces in the Soundtrack Genre
+
+SELECT piece_name, composer_name, published_year
+FROM piece
+JOIN genre_piece ON genre_piece.piece_id = piece.piece_id
+JOIN genre ON genre.genre_id = genre_piece.genre_id
+JOIN composer_piece ON composer_piece.piece_id = piece.piece_id
+JOIN composer ON composer_piece.composer_id = composer.composer_id
+WHERE genre_name = 'Soundtrack'
+ORDER BY piece_name ASC;
+
+-- List the pieces by Beethoven
+
+SELECT piece_name, composer_name, published_year
+FROM piece
+JOIN genre_piece ON genre_piece.piece_id = piece.piece_id
+JOIN genre ON genre.genre_id = genre_piece.genre_id
+JOIN composer_piece ON composer_piece.piece_id = piece.piece_id
+JOIN composer ON composer_piece.composer_id = composer.composer_id
+WHERE composer_name LIKE '%Beethoven'
+ORDER BY piece_name ASC;
+
+-- List the pieces that were written after 2000
+
+SELECT piece_name, composer_name, published_year
+FROM piece
+JOIN genre_piece ON genre_piece.piece_id = piece.piece_id
+JOIN genre ON genre.genre_id = genre_piece.genre_id
+JOIN composer_piece ON composer_piece.piece_id = piece.piece_id
+JOIN composer ON composer_piece.composer_id = composer.composer_id
+WHERE published_year > 2000
+ORDER BY published_year DESC;
+
 
 
 
