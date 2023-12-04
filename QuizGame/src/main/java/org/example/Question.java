@@ -104,4 +104,15 @@ public class Question {
         return answersToDisplay;
 
     }
+
+    @Override
+    public String toString() {
+        answersToDisplay = getAnswersToDisplay();
+        return getQuestion() +
+                "\n1. " + answersToDisplay[0] +
+                "\n2. " + answersToDisplay[1] +
+                "\n3. " + answersToDisplay[2] +
+                "\n4. " + answersToDisplay[3];
+
+    }
 }
