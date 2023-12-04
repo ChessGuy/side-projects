@@ -7,7 +7,7 @@ public class Main {
 //        Question question = new Question("test", "easy", "test", "Here is the question", "correct answer",
 //                new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
         QuestionServices questionServices = new QuestionServices();
-        Question [] questions = questionServices.getAll(9, "easy");
+        Question [] questions = questionServices.getAll(9, "medium");
 
         System.out.println(questions[0]);
     }
