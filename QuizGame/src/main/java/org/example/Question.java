@@ -1,5 +1,6 @@
 package org.example;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -72,7 +73,7 @@ public class Question {
     public void setIncorrectAnswers(String[] incorrectAnswers) {
         this.incorrectAnswers = incorrectAnswers;
     }
-    public String [] getAnswersToDisplay () {
+    public String [] createAnswersToDisplay () {
         String [] allAnswers = {getCorrectAnswer(), getIncorrectAnswers()[0], getIncorrectAnswers()[1], getIncorrectAnswers()[2]};
         String [] answersToDisplay = new String[4];
         int [] randIndexes = new int []{-1, -1, -1, -1};
@@ -105,9 +106,13 @@ public class Question {
 
     }
 
+    public String[] getAnswersToDisplay() {
+        return answersToDisplay;
+    }
+
     @Override
     public String toString() {
-        answersToDisplay = getAnswersToDisplay();
+        answersToDisplay = createAnswersToDisplay();
         return getQuestion() +
                 "\n1. " + answersToDisplay[0] +
                 "\n2. " + answersToDisplay[1] +

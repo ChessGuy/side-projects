@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8626dfc4-ab56-4633-b82e-9fa688d9c5e3" name="Changes" comment="" />
+    <list default="true" id="8626dfc4-ab56-4633-b82e-9fa688d9c5e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/QuizGame/src/main/java/org/example/QuestionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/QuizGame/src/main/java/org/example/QuestionServices.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
