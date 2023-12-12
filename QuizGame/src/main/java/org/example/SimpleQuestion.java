@@ -3,7 +3,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Random;
 
-public class Question {
+public class SimpleQuestion {
 
     private String type;
     private String difficulty;
@@ -15,7 +15,7 @@ public class Question {
     private String [] incorrectAnswers;
     private String [] answersToDisplay;
 
-    public Question(String type, String difficulty, String category, String question, String correctAnswer, String[] incorrectAnswers) {
+    public SimpleQuestion(String type, String difficulty, String category, String question, String correctAnswer, String[] incorrectAnswers) {
         this.type = type;
         this.difficulty = difficulty;
         this.category = category;
@@ -119,4 +119,3 @@ public class Question {
 
     }
 }
-

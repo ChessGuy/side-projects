@@ -1,18 +1,16 @@
 package org.example;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Question question1 = new Question("test", "easy", "test", "Here is the question", "correct answer",
+        SimpleQuestion simpleQuestion1 = new SimpleQuestion("test", "easy", "test", "Here is the question", "correct answer",
                 new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
-        Question question2 = new Question("test", "easy", "test", "Here is another question", "correct answer",
+        SimpleQuestion simpleQuestion2 = new SimpleQuestion("test", "easy", "test", "Here is another question", "correct answer",
                 new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
-        QuestionServices questionServices = new QuestionServices();
-        Question [] questions = new Question []{question1, question2};
-//        Question [] questions = questionServices.getAll(9, "medium");
+//        QuestionServices questionServices = new QuestionServices();
+        SimpleQuestion [] questions = new SimpleQuestion[] {simpleQuestion1, simpleQuestion2};
+//        SimpleQuestion[] questions = questionServices.getAll(9, "medium");
 
         //Game Loop
 
