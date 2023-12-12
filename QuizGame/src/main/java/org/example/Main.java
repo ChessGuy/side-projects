@@ -44,7 +44,7 @@ public class Main {
                 System.out.println("Correct!");
                 score++;
             } else {
-                System.out.println("Incorrect! The correct answer was " + (indexOfCorrectAnswer + 1) + ".");
+                System.out.println("Incorrect! The correct answer was " + (indexOfCorrectAnswer + 1) + ": " + correctAnswer + ".");
             }
             System.out.println("Your current score is " + score + "/" + (i + 1) + ".");
         }
@@ -63,7 +63,7 @@ public class Main {
                     !userInput.equals("2") &&
                     !userInput.equals("3") &&
                     !userInput.equals("4")) {
-                System.out.println("Invalid entry.  Please try again");
+                System.out.println("Invalid entry.  Please try again.");
             }
         } while (!userInput.equals("1") &&
                 !userInput.equals("2") &&
