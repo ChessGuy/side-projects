@@ -17,7 +17,7 @@ public class Main {
         //Game Loop
 
         System.out.println("*************************************");
-        System.out.println("**       Welcome to the Quiz!      **");
+        System.out.println("***      Welcome to the Quiz!     ***");
         System.out.println("*************************************");
 
         int score = 0;
@@ -25,7 +25,7 @@ public class Main {
 
         for (int i = 0; i < questions.length; i++) {
             System.out.println();
-            System.out.println("Here is question: " + (i + 1));
+            System.out.println("Here is question " + (i + 1) + ":");
             System.out.println();
             System.out.println(questions[i]);
             String correctAnswer = questions[i].getCorrectAnswer();
@@ -44,13 +44,13 @@ public class Main {
                 System.out.println("Correct!");
                 score++;
             } else {
-                System.out.println("Incorrect! The correct answer was: " + (indexOfCorrectAnswer + 1));
+                System.out.println("Incorrect! The correct answer was " + (indexOfCorrectAnswer + 1) + ".");
             }
-            System.out.println("Your current score is " + score + "/" + (i + 1));
+            System.out.println("Your current score is " + score + "/" + (i + 1) + ".");
         }
         //Game Over text
         System.out.println();
-        System.out.println("Quiz completed!  Your final score is " + score + "/" + questions.length);
+        System.out.println("Quiz completed!  Your final score is " + score + "/" + questions.length + ".");
     }
 
     public static String promptForUserInput (String message) {
