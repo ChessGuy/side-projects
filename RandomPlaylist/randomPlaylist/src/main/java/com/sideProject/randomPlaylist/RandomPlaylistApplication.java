@@ -10,7 +10,7 @@ public class RandomPlaylistApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(RandomPlaylistApplication.class, args);
 
-		SimpleSong sample = new SimpleSong("Song 1", "Artist 1", "Genre 1", 66000);
+		SimpleSong sample = new SimpleSong("Song 1", "Artist 1", "Genre 1", 115000);
 
 		System.out.println(sample);
 	}

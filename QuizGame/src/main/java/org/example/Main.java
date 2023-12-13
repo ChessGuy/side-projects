@@ -8,10 +8,12 @@ public class Main {
                 new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
         SimpleQuestion simpleQuestion2 = new SimpleQuestion("test", "easy", "test", "Here is another question", "correct answer",
                 new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
-//        QuestionServices questionServices = new QuestionServices();
-        SimpleQuestion [] questions = new SimpleQuestion[] {simpleQuestion1, simpleQuestion2};
-//        SimpleQuestion[] questions = questionServices.getAll(9, "medium");
+        QuestionServices questionServices = new QuestionServices();
+//        SimpleQuestion [] questions = new SimpleQuestion[] {simpleQuestion1, simpleQuestion2};
+        QuestionSet questionSet = questionServices.getAll(9, "medium");
+        Question [] questions = questionSet.getQuestions();
 
+        Scanner sc = new Scanner(System.in);
         //Game Loop
 
         System.out.println("*************************************");
@@ -36,7 +38,7 @@ public class Main {
                 }
             }
 
-            int userAnswer = Integer.parseInt(promptForUserInput("What is your answer? (1, 2, 3, 4) "));
+            int userAnswer = Integer.parseInt(promptForUserAnswer("What is your answer? (1, 2, 3, 4) ", sc));
 
             if (userAnswer == (indexOfCorrectAnswer + 1)) {
                 System.out.println("Correct!");
@@ -51,8 +53,7 @@ public class Main {
         System.out.println("Quiz completed!  Your final score is " + score + "/" + questions.length + ".");
     }
 
-    public static String promptForUserInput (String message) {
-        Scanner sc = new Scanner(System.in);
+    public static String promptForUserAnswer (String message, Scanner sc) {
         String userInput = "";
         do {
             System.out.println(message);

@@ -51,7 +51,7 @@ public class SimpleSong {
         public String [] getMinSec () {
                 int mins = (songDurationMs / 1000) / 60;
                 int seconds = 0;
-                String secondsString = "";
+                String secondsString = "00";
                 if ((songDurationMs / 1000) % 60 != 0) {
                         seconds = (songDurationMs / 1000) % 60;
                         if (seconds < 10) {

@@ -9,9 +9,7 @@ public class SimpleQuestion {
     private String difficulty;
     private String category;
     private String question;
-    @JsonProperty("correct_answer")
     private String correctAnswer;
-    @JsonProperty("incorrect_answers")
     private String [] incorrectAnswers;
     private String [] answersToDisplay;
 
