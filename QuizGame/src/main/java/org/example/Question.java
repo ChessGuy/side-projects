@@ -24,6 +24,10 @@ public class Question {
         this.incorrectAnswers = incorrectAnswers;
     }
 
+    public Question() {
+
+    }
+
     public String getType() {
         return type;
     }
