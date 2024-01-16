@@ -6,7 +6,7 @@ public class Score {
 
     @NotNull
     private int scoreId;
-    @Size (max = 3)
+    @Size (min = 3, max = 3)
     private String initials;
     @NotNull
     private int score;
@@ -45,6 +45,6 @@ public class Score {
 
     @Override
     public String toString () {
-        return scoreId + "  " + initials + "........................" + score;
+        return scoreId + "  " + initials + "................." + score;
     }
 }
