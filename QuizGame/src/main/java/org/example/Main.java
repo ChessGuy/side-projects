@@ -1,6 +1,8 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Base64;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -10,7 +12,6 @@ public class Main {
                 new String []{"incorrect 1", "incorrect 2", "incorrect 3"});
         QuestionServices questionServices = new QuestionServices();
 //        SimpleQuestion [] questions = new SimpleQuestion[] {simpleQuestion1, simpleQuestion2};
-
 
         Scanner sc = new Scanner(System.in);
         //Game Loop
@@ -55,7 +56,7 @@ public class Main {
                 System.out.println("Correct!");
                 score++;
             } else {
-                System.out.println("Incorrect! The correct answer was " + (indexOfCorrectAnswer + 1) + ": " + correctAnswer + ".");
+                System.out.println("Incorrect! The correct answer was " + (indexOfCorrectAnswer + 1) + ": " + decodeString(correctAnswer) + ".");
             }
             System.out.println("Your current score is " + score + "/" + (i + 1) + ".");
         }
@@ -181,4 +182,9 @@ public class Main {
             return "hard";
         }
     }
+    public static String decodeString (String encodedString) {
+        byte [] decodedBytes = Base64.getDecoder().decode(encodedString);
+        return new String (decodedBytes);
+    }
+
 }

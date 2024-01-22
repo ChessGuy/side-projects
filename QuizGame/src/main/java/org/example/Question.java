@@ -1,6 +1,7 @@
 package org.example;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Base64;
 import java.util.Random;
 
 public class Question {
@@ -115,12 +116,17 @@ public class Question {
     @Override
     public String toString() {
         answersToDisplay = createAnswersToDisplay();
-        return getQuestion() +
-                "\n1. " + answersToDisplay[0] +
-                "\n2. " + answersToDisplay[1] +
-                "\n3. " + answersToDisplay[2] +
-                "\n4. " + answersToDisplay[3];
+        return decodeString(getQuestion()) +
+                "\n1. " + decodeString(answersToDisplay[0]) +
+                "\n2. " + decodeString(answersToDisplay[1]) +
+                "\n3. " + decodeString(answersToDisplay[2]) +
+                "\n4. " + decodeString(answersToDisplay[3]);
 
+    }
+
+    public String decodeString (String encodedString) {
+        byte [] decodedBytes = Base64.getDecoder().decode(encodedString);
+        return new String (decodedBytes);
     }
 }
 

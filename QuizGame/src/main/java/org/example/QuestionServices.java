@@ -14,7 +14,7 @@ public class QuestionServices {
         QuestionSet questions = null;
         try {
 //            questions = restTemplate.getForObject(API_BASE_URL, QuestionSet.class);
-            questions = restTemplate.getForObject(API_BASE_URL + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple", QuestionSet.class);
+            questions = restTemplate.getForObject(API_BASE_URL + "&category=" + category + "&difficulty=" + difficulty + "&type=multiple&encode=base64", QuestionSet.class);
         } catch (RestClientResponseException e) {
             throw new Exception (e.getRawStatusCode() + " : " + e.getStatusText());
         }
