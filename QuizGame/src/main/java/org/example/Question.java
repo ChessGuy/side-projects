@@ -8,7 +8,7 @@ public class Question {
     private String type;
     private String difficulty;
     private String category;
-//    private String question;
+    private String question;
     @JsonProperty("correct_answer")
     private String correctAnswer;
     @JsonProperty("incorrect_answers")
@@ -19,7 +19,7 @@ public class Question {
         this.type = type;
         this.difficulty = difficulty;
         this.category = category;
-//        this.question = question;
+        this.question = question;
         this.correctAnswer = correctAnswer;
         this.incorrectAnswers = incorrectAnswers;
     }
@@ -40,9 +40,9 @@ public class Question {
         return category;
     }
 
-//    public String getQuestion() {
-////        return question;
-//    }
+    public String getQuestion() {
+        return question;
+    }
 
     public String getCorrectAnswer() {
         return correctAnswer;
