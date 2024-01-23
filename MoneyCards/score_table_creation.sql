@@ -21,6 +21,19 @@ VALUES
 	('___', 2000),
 	('___', 1000)
 ;
-	
-SELECT * FROM score;
+
+-- -- Testing SQL Queries to handle adding scores and deleting the last one in order
+
+-- INSERT INTO score (initials, score)
+-- VALUES ('TES', 6500);
+
+-- -- Delete the lowest score
+-- DELETE FROM score
+-- WHERE score = (SELECT MIN (score) FROM score);
+
+-- Test to see if it worked
+SELECT * FROM score
+ORDER BY score DESC;
+
+
 

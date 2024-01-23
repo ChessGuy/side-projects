@@ -93,6 +93,15 @@ public class JdbcScoreDao implements ScoreDao{
 
     @Override
     public int deleteLowestScore() {
-        return 0;
+        String sql = "DELETE FROM score " +
+                "WHERE score = (SELECT MIN (score) FROM score);";
+
+        try {
+            return jdbcTemplate.update(sql);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
     }
 }
