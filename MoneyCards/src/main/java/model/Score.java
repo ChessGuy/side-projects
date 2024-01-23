@@ -45,6 +45,10 @@ public class Score {
 
     @Override
     public String toString () {
-        return scoreId + "  " + initials + "................." + score;
+        String scoreIdString = Integer.toString(scoreId);
+        if (Integer.toString(scoreId).length() <= 1) {
+            scoreIdString = " " + scoreIdString;
+        }
+        return scoreIdString + "  " + initials + "................." + score;
     }
 }

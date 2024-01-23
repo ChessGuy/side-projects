@@ -1,5 +1,11 @@
 package view;
 
+import dao.JdbcScoreDao;
+import dao.ScoreDao;
+import model.Score;
+import model.ScoreBoard;
+import org.apache.commons.dbcp2.BasicDataSource;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,116 +14,128 @@ import java.util.*;
 
 public class MoneyCardsCLI {
 
+
     //Create a clone of the Card Sharks money cards game
-    public MoneyCardsCLI (){
+    public MoneyCardsCLI() {
 
-    int roundNumber = 1;
-    int bid = 0;
-    String playerChoice = "";
-    final int MAX_ROUND = 8;
-    int changes = 3;
-    int playerBank = 200; //200 for the real game
-    int addMoney = 400;
-    boolean gameOver = false;
-    final int SUITS = 4;
-    final int MIN_VALUE = 2;
-    final int MAX_VALUE = 14;
-    ArrayList<Integer> cardsInPlay = new ArrayList<Integer>();
-    ArrayList<Integer> deck = createDeck(SUITS, MIN_VALUE, MAX_VALUE);
+        //Set up database to pull Scoreboard
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/CardSharks");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres1");
+
+        ScoreDao scoreDao = new JdbcScoreDao(dataSource);
+
+        //Parameters
+        int roundNumber = 1;
+        int bid = 0;
+        String playerChoice = "";
+        final int MAX_ROUND = 8;
+        int changes = 3;
+        int playerBank = 200; //200 for the real game
+        int addMoney = 400;
+        boolean gameOver = false;
+        final int SUITS = 4;
+        final int MIN_VALUE = 2;
+        final int MAX_VALUE = 14;
+        ArrayList<Integer> cardsInPlay = new ArrayList<Integer>();
+        ArrayList<Integer> deck = createDeck(SUITS, MIN_VALUE, MAX_VALUE);
 
 
-    //Start of first hand
+        //Start of first hand
         System.out.println("********************************");
         System.out.println("*** WELCOME TO CARD SHARKS!! ***");
         System.out.println("********************************");
 
-    drawCard(cardsInPlay, deck);
+        drawCard(cardsInPlay, deck);
 
-    //Start of game loop
+        //Display High Scores
+        ScoreBoard scoreBoard = new ScoreBoard(scoreDao.getScores());
+        System.out.println(scoreBoard);
 
-        while(!gameOver)
+        //Start of game loop
 
-    {
-        //Print player bank and cards in play
-        Scanner input = new Scanner(System.in);
-        String changeText = "changes";
-        if (changes == 1) {
-            changeText = "change";
-        }
-        System.out.printf("You have $%d in your bank and %d %s left.\n", playerBank, changes, changeText);
-        if (roundNumber == MAX_ROUND) {
-            int finalBid = playerBank / 2;
-            System.out.printf("\nFINAL ROUND!  You must bid half of your bank ($%d) on this flip.  Good Luck!\n", finalBid);
-        } else {
-            System.out.printf("\nLet's start Round %d!\n", roundNumber);
-        }
-        System.out.println("Here is the board of cards:");
-
-        //Display board
-        displayCards(cardsInPlay);
-        System.out.println();
-        //System.out.println(cardsInPlay);
-
-        //Ask player if they want to change the current card
-        if (changes > 0) {
-            System.out.println("Would you like to keep or change the current card? (k/c)");
-            playerChoice = input.nextLine().toUpperCase();
-
-            while (!playerChoice.equals("K") && !playerChoice.equals("C")) {
-                System.out.println("Invalid choice.  Please try again");
-                System.out.println("Would you like to keep or change the current card? (Enter keep or change)");
-                playerChoice = input.nextLine().toUpperCase();
+        while (!gameOver) {
+            //Print player bank and cards in play
+            Scanner input = new Scanner(System.in);
+            String changeText = "changes";
+            if (changes == 1) {
+                changeText = "change";
             }
-        }
-        if (playerChoice.equals("C")) {
-            System.out.println("You have chosen to change your card.  Here is your new board:");
-            replaceCard(cardsInPlay, deck, roundNumber - 1);
+            System.out.printf("You have $%d in your bank and %d %s left.\n", playerBank, changes, changeText);
+            if (roundNumber == MAX_ROUND) {
+                int finalBid = playerBank / 2;
+                System.out.printf("\nFINAL ROUND!  You must bid half of your bank ($%d) on this flip.  Good Luck!\n", finalBid);
+            } else {
+                System.out.printf("\nLet's start Round %d!\n", roundNumber);
+            }
+            System.out.println("Here is the board of cards:");
+
+            //Display board
             displayCards(cardsInPlay);
             System.out.println();
-            changes--;
-        }
+            //System.out.println(cardsInPlay);
 
-        //Ask the player for the higher or lower choice
-        System.out.println("Do you think the next card is higher or lower (h/l)?");
-        playerChoice = input.nextLine().toUpperCase();
+            //Ask player if they want to change the current card
+            if (changes > 0) {
+                System.out.println("Would you like to keep or change the current card? (k/c)");
+                playerChoice = input.nextLine().toUpperCase();
 
-        while (!playerChoice.equals("H") && !playerChoice.equals("L")) {
-            System.out.println("Invalid choice.  Please try again");
-            System.out.println("Do you think the next card is higher or lower?");
+                while (!playerChoice.equals("K") && !playerChoice.equals("C")) {
+                    System.out.println("Invalid choice.  Please try again");
+                    System.out.println("Would you like to keep or change the current card? (Enter keep or change)");
+                    playerChoice = input.nextLine().toUpperCase();
+                }
+            }
+            if (playerChoice.equals("C")) {
+                System.out.println("You have chosen to change your card.  Here is your new board:");
+                replaceCard(cardsInPlay, deck, roundNumber - 1);
+                displayCards(cardsInPlay);
+                System.out.println();
+                changes--;
+            }
+
+            //Ask the player for the higher or lower choice
+            System.out.println("Do you think the next card is higher or lower (h/l)?");
             playerChoice = input.nextLine().toUpperCase();
-        }
 
-        //Ask the player for a bid
-        bid = takeBid(input, playerBank, roundNumber, MAX_ROUND);
+            while (!playerChoice.equals("H") && !playerChoice.equals("L")) {
+                System.out.println("Invalid choice.  Please try again");
+                System.out.println("Do you think the next card is higher or lower?");
+                playerChoice = input.nextLine().toUpperCase();
+            }
 
-        //Draw and new card Compare results and adjust their bank
-        drawCard(cardsInPlay, deck);
-        playerBank = playRound(cardsInPlay.get(roundNumber - 1), cardsInPlay.get(roundNumber), bid, playerBank, playerChoice);
-        //Increment round and resolve new money and game over conditions
-        if (roundNumber == MAX_ROUND) {
-            gameOver = gameOver(gameOver, playerBank, input);
-        }
+            //Ask the player for a bid
+            bid = takeBid(input, playerBank, roundNumber, MAX_ROUND);
 
-        roundNumber++;
-
-        if (playerBank == 0) {
-            if (roundNumber < 4) {
-                System.out.println("You have busted before the 3rd round.");
-                roundNumber = 4;
-            } else if (roundNumber < MAX_ROUND) {
+            //Draw and new card Compare results and adjust their bank
+            drawCard(cardsInPlay, deck);
+            playerBank = playRound(cardsInPlay.get(roundNumber - 1), cardsInPlay.get(roundNumber), bid, playerBank, playerChoice);
+            //Increment round and resolve new money and game over conditions
+            if (roundNumber == MAX_ROUND) {
                 gameOver = gameOver(gameOver, playerBank, input);
             }
-        }
 
-        if (roundNumber == 4) {
-            playerBank += addMoney;
-            System.out.println("You have earned an extra $400 in your bank for making it to Round 4.");
-        }
+            roundNumber++;
 
+            if (playerBank == 0) {
+                if (roundNumber < 4) {
+                    System.out.println("You have busted before the 3rd round.");
+                    roundNumber = 4;
+                } else if (roundNumber < MAX_ROUND) {
+                    gameOver = gameOver(gameOver, playerBank, input);
+                }
+            }
+
+            if (roundNumber == 4) {
+                playerBank += addMoney;
+                System.out.println("You have earned an extra $400 in your bank for making it to Round 4.");
+            }
+
+
+        }
 
     }
-
-}
 
 
     public static ArrayList<Integer> createDeck(int suits, int minValue, int maxValue) {

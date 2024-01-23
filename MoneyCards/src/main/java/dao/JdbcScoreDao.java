@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,10 @@ import java.util.List;
 public class JdbcScoreDao implements ScoreDao{
 
     JdbcTemplate jdbcTemplate;
+
+    public JdbcScoreDao(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     public JdbcScoreDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

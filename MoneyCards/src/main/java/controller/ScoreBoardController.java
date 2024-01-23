@@ -11,9 +11,4 @@ public class ScoreBoardController {
     public ScoreBoardController (ScoreDao scoreDao){
         this.scoreDao = scoreDao;
     }
-
-    public String displayScoreBoard () {
-        List<Score> scores = scoreDao.getScores();
-        return scores.toString();
-    }
 }
