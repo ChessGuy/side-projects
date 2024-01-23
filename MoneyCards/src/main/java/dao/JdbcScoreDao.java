@@ -1,11 +1,17 @@
 package dao;
 
+import exception.DaoException;
 import model.Score;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcScoreDao implements ScoreDao{
 
     JdbcTemplate jdbcTemplate;
@@ -24,7 +30,20 @@ public class JdbcScoreDao implements ScoreDao{
 
     @Override
     public List<Score> getScores() {
-        return null;
+        List<Score> scores = new ArrayList<>();
+        String sql = "SELECT * FROM score";
+
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+            while (rowSet.next()) {
+                scores.add(mapRowToScore(rowSet));
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database or server", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation", e);
+        }
+        return scores;
     }
 
     @Override

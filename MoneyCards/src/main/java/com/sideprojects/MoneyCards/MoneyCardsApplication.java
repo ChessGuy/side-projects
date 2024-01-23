@@ -1,5 +1,6 @@
 package com.sideprojects.MoneyCards;
 
+import dao.ScoreDao;
 import model.Score;
 import model.ScoreBoard;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,7 @@ public class MoneyCardsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MoneyCardsApplication.class, args);
+
 		List<Score> scores = new ArrayList<>();
 		Score score1 = new Score(1, "EJ ", 3000);
 		Score score2 = new Score(2, "EJB", 2500);
