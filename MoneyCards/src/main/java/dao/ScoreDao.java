@@ -8,13 +8,10 @@ public interface ScoreDao {
 
     List<Score> getScores ();
 
-    Score getScoreById ();
+    Score getScoreById (int scoreId);
 
-    Score createScore ();
-
-    Score updateScore ();
+    Score createScore (Score score);
 
     int deleteLowestScore ();
-
 
 }

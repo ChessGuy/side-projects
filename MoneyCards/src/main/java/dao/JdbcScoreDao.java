@@ -36,7 +36,7 @@ public class JdbcScoreDao implements ScoreDao{
     @Override
     public List<Score> getScores() {
         List<Score> scores = new ArrayList<>();
-        String sql = "SELECT * FROM score";
+        String sql = "SELECT * FROM score ORDER BY score DESC LIMIT 10";
 
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
@@ -52,19 +52,44 @@ public class JdbcScoreDao implements ScoreDao{
     }
 
     @Override
-    public Score getScoreById() {
-        return null;
+    public Score getScoreById(int scoreId) {
+        Score score = null;
+
+        String sql = "SELECT * FROM score WHERE score_id = ?";
+
+        try {
+            SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, scoreId);
+            if (rowSet.next()) {
+                score = mapRowToScore(rowSet);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database or server", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation", e);
+        }
+
+        return score;
     }
 
     @Override
-    public Score createScore() {
-        return null;
+    public Score createScore(Score score) {
+        int newId;
+
+        String sql = "INSERT INTO public.score(initials, score) " +
+                "VALUES (?, ?) RETURNING score_id;";
+
+        try {
+            newId = jdbcTemplate.queryForObject(sql, int.class, score.getInitials(),
+                    score.getScore());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to database or server", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data Integrity Violation", e);
+        }
+        return getScoreById(newId);
+
     }
 
-    @Override
-    public Score updateScore() {
-        return null;
-    }
 
     @Override
     public int deleteLowestScore() {

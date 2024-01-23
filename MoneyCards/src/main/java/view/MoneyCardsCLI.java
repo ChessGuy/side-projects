@@ -46,12 +46,15 @@ public class MoneyCardsCLI {
         System.out.println("********************************");
         System.out.println("*** WELCOME TO CARD SHARKS!! ***");
         System.out.println("********************************");
+        System.out.println();
 
         drawCard(cardsInPlay, deck);
 
         //Display High Scores
         ScoreBoard scoreBoard = new ScoreBoard(scoreDao.getScores());
         System.out.println(scoreBoard);
+        System.out.println("********************************");
+        System.out.println();
 
         //Start of game loop
 
