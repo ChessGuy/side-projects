@@ -1,5 +1,6 @@
 package com.sideprojects.MoneyCards;
 
+import controller.ScoreBoardController;
 import dao.ScoreDao;
 import model.Score;
 import model.ScoreBoard;
