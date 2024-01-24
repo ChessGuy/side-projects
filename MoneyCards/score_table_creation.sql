@@ -32,6 +32,10 @@ VALUES
 -- WHERE score = (SELECT MIN (score) FROM score);
 
 -- Test to see if it worked
+
+SELECT * FROM score
+WHERE score = (SELECT MIN (score) FROM score)
+
 SELECT * FROM score
 ORDER BY score DESC;
 

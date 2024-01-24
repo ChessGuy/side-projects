@@ -12,6 +12,8 @@ public interface ScoreDao {
 
     Score createScore (Score score);
 
+    Score getLowestScore ();
+
     int deleteLowestScore ();
 
 }
