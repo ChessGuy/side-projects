@@ -133,10 +133,7 @@ public class MoneyCardsCLI {
                 playerBank += addMoney;
                 System.out.println("You have earned an extra $400 in your bank for making it to Round 4.");
             }
-
-
         }
-
     }
 
 
@@ -209,48 +206,37 @@ public class MoneyCardsCLI {
 
     public static boolean gameOver(boolean gameOver, int playerBank, Scanner scanner, ScoreDao scoreDao) {
 
-//        String highScoreFilePath = "CardSharks/src/high-scores.txt";  //From project file directory
-//        File highScoreFile = new File(highScoreFilePath);
         gameOver = true;
         System.out.printf("\nGame Over. Your final bank is $%d.", playerBank);
 
         //Record high scores
-        Score score = new Score();
+
         Score lowestScore = scoreDao.getLowestScore();
         String userChoice = "";
 
         if (playerBank > lowestScore.getScore()) {
+            System.out.println("\n\nYou beat a High Score!!!");
+
             do {
-                System.out.println("\n\nYou beat a High Score!!!");
-                userChoice = scanner.nextLine().toLowerCase();
+                System.out.println("Enter your initials (3 characters required)");
+                userChoice = scanner.nextLine();
 
-                if (!userChoice.equals("y") && !userChoice.equals("n")) {
-                    System.out.println("Invalid choice.  Please try again.");
+                if (userChoice.length() != 3) {
+                    System.out.println("Initials must be 3 characters.  Please try again");
                 }
-            } while (!userChoice.equals("y") && !userChoice.equals("n"));
+               } while (userChoice.length() != 3);
 
-            if (userChoice.equals("y")) {
-                System.out.println("What is your first name?");
-                String userFirstName = scanner.nextLine();
-                System.out.println("What is your last name?");
-                String userLastName = scanner.nextLine();
+            Score newScore = new Score();
+            newScore.setInitials(userChoice);
+            newScore.setScore(playerBank);
 
-//                Player newPlayer = new Player(userFirstName, userLastName, playerBank);
+            scoreDao.createScore(newScore);
+            scoreDao.deleteLowestScore();
 
-//                try (PrintWriter log = new PrintWriter(new FileOutputStream(highScoreFile, true))) {
-////                    log.println(newPlayer);
-//                    System.out.println("Your score of $" + playerBank + " has been recorded.  Thanks for playing!");
-//                } catch (FileNotFoundException e) {
-//                    System.out.println("*** Unable to open log file: " + highScoreFile.getAbsolutePath());
-//                }
+            System.out.println("Your score of " + playerBank + " has been added to the high scores.");
 
-            } else {
-                System.out.println("Your score will not be recorded.  Thanks for playing!");
             }
 
-        } else {
-            System.out.println("Thanks for playing!");
-        }
         return gameOver;
     }
 
