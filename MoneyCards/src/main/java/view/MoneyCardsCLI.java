@@ -77,7 +77,6 @@ public class MoneyCardsCLI {
             //Display board
             displayCards(cardsInPlay);
             System.out.println();
-            //System.out.println(cardsInPlay);
 
             //Ask player if they want to change the current card
             if (changes > 0) {
@@ -116,7 +115,7 @@ public class MoneyCardsCLI {
             playerBank = playRound(cardsInPlay.get(roundNumber - 1), cardsInPlay.get(roundNumber), bid, playerBank, playerChoice);
             //Increment round and resolve new money and game over conditions
             if (roundNumber == MAX_ROUND) {
-                gameOver = gameOver(gameOver, playerBank, input);
+                gameOver = gameOver(gameOver, playerBank, input, scoreDao);
             }
 
             roundNumber++;
@@ -126,7 +125,7 @@ public class MoneyCardsCLI {
                     System.out.println("You have busted before the 3rd round.");
                     roundNumber = 4;
                 } else if (roundNumber < MAX_ROUND) {
-                    gameOver = gameOver(gameOver, playerBank, input);
+                    gameOver = gameOver(gameOver, playerBank, input, scoreDao);
                 }
             }
 
@@ -208,20 +207,21 @@ public class MoneyCardsCLI {
 
     }
 
-    public static boolean gameOver(boolean gameOver, int playerBank, Scanner scanner) {
+    public static boolean gameOver(boolean gameOver, int playerBank, Scanner scanner, ScoreDao scoreDao) {
 
-        String highScoreFilePath = "CardSharks/src/high-scores.txt";  //From project file directory
-        File highScoreFile = new File(highScoreFilePath);
+//        String highScoreFilePath = "CardSharks/src/high-scores.txt";  //From project file directory
+//        File highScoreFile = new File(highScoreFilePath);
         gameOver = true;
         System.out.printf("\nGame Over. Your final bank is $%d.", playerBank);
 
         //Record high scores
-
+        Score score = new Score();
+        Score lowestScore = scoreDao.getLowestScore();
         String userChoice = "";
 
-        if (playerBank > 0) {
+        if (playerBank > lowestScore.getScore()) {
             do {
-                System.out.println("\n\nWould you like to record your score? (y/n)");
+                System.out.println("\n\nYou beat a High Score!!!");
                 userChoice = scanner.nextLine().toLowerCase();
 
                 if (!userChoice.equals("y") && !userChoice.equals("n")) {
@@ -237,17 +237,16 @@ public class MoneyCardsCLI {
 
 //                Player newPlayer = new Player(userFirstName, userLastName, playerBank);
 
-                try (PrintWriter log = new PrintWriter(new FileOutputStream(highScoreFile, true))) {
-//                    log.println(newPlayer);
-                    System.out.println("Your score of $" + playerBank + " has been recorded.  Thanks for playing!");
-                } catch (FileNotFoundException e) {
-                    System.out.println("*** Unable to open log file: " + highScoreFile.getAbsolutePath());
-                }
+//                try (PrintWriter log = new PrintWriter(new FileOutputStream(highScoreFile, true))) {
+////                    log.println(newPlayer);
+//                    System.out.println("Your score of $" + playerBank + " has been recorded.  Thanks for playing!");
+//                } catch (FileNotFoundException e) {
+//                    System.out.println("*** Unable to open log file: " + highScoreFile.getAbsolutePath());
+//                }
 
             } else {
                 System.out.println("Your score will not be recorded.  Thanks for playing!");
             }
-
 
         } else {
             System.out.println("Thanks for playing!");
