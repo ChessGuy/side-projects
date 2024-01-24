@@ -24,7 +24,7 @@ public class ScoreBoard {
     @Override
     public String toString () {
         String scoreBoardString =
-                "           HIGH SCORES        \n" +
+                "          HIGH SCORES         \n" +
                 "______________________________\n";
         for (Score score: scores) {
             scoreBoardString += score.toString() + "\n";
