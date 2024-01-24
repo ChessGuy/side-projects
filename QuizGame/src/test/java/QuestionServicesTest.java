@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Base64;
+
 public class QuestionServicesTest {
     QuestionServices questionServices = new QuestionServices();
     QuestionSet questionSetTest = null;
@@ -21,7 +23,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(9, "easy");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The easy question was not the correct difficulty", testQuestions[0].getDifficulty(), "easy");
+        Assert.assertEquals("The easy question was not the correct difficulty", decodeString(testQuestions[0].getDifficulty()), "easy");
     }
 
     @Test
@@ -29,7 +31,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(9, "medium");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The medium question was not the correct difficulty", testQuestions[0].getDifficulty(), "medium");
+        Assert.assertEquals("The medium question was not the correct difficulty", decodeString(testQuestions[0].getDifficulty()), "medium");
     }
 
     @Test
@@ -37,7 +39,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(9, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The hard question was not the correct difficulty", testQuestions[0].getDifficulty(), "hard");
+        Assert.assertEquals("The hard question was not the correct difficulty", decodeString(testQuestions[0].getDifficulty()), "hard");
     }
 
     @Test
@@ -45,7 +47,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(9, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The general knowledge question did not have the right category", testQuestions[0].getCategory(), "General Knowledge");
+        Assert.assertEquals("The general knowledge question did not have the right category", decodeString(testQuestions[0].getCategory()), "General Knowledge");
     }
 
     @Test
@@ -53,7 +55,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(10, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The books question did not have the right category", testQuestions[0].getCategory(), "Entertainment: Books");
+        Assert.assertEquals("The books question did not have the right category", decodeString(testQuestions[0].getCategory()), "Entertainment: Books");
     }
 
     @Test
@@ -61,7 +63,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(11, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The movies question did not have the right category", testQuestions[0].getCategory(), "Entertainment: Film");
+        Assert.assertEquals("The movies question did not have the right category", decodeString(testQuestions[0].getCategory()), "Entertainment: Film");
     }
 
     @Test
@@ -69,7 +71,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(12, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The music question did not have the right category", testQuestions[0].getCategory(), "Entertainment: Music");
+        Assert.assertEquals("The music question did not have the right category", decodeString(testQuestions[0].getCategory()), "Entertainment: Music");
     }
 
     @Test
@@ -77,7 +79,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(14, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The television question did not have the right category", testQuestions[0].getCategory(), "Entertainment: Television");
+        Assert.assertEquals("The television question did not have the right category", decodeString(testQuestions[0].getCategory()), "Entertainment: Television");
     }
 
     @Test
@@ -85,7 +87,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(15, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The video games question did not have the right category", testQuestions[0].getCategory(), "Entertainment: Video Games");
+        Assert.assertEquals("The video games question did not have the right category", decodeString(testQuestions[0].getCategory()), "Entertainment: Video Games");
     }
 
     @Test
@@ -93,7 +95,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(21, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The sports question did not have the right category", testQuestions[0].getCategory(), "Sports");
+        Assert.assertEquals("The sports question did not have the right category", decodeString(testQuestions[0].getCategory()), "Sports");
     }
 
     @Test
@@ -101,7 +103,7 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(27, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The animals question did not have the right category", testQuestions[0].getCategory(), "Animals");
+        Assert.assertEquals("The animals question did not have the right category", decodeString(testQuestions[0].getCategory()), "Animals");
     }
 
     @Test
@@ -109,6 +111,11 @@ public class QuestionServicesTest {
         questionSetTest = questionServices.getAll(17, "hard");
         Question [] testQuestions = questionSetTest.getQuestions();
 
-        Assert.assertEquals("The science question did not have the right category", testQuestions[0].getCategory(), "Science &amp; Nature");
+        Assert.assertEquals("The science question did not have the right category", decodeString(testQuestions[0].getCategory()), "Science & Nature");
+    }
+
+    public String decodeString (String encodedString) {
+        byte [] decodedBytes = Base64.getDecoder().decode(encodedString);
+        return new String (decodedBytes);
     }
 }
