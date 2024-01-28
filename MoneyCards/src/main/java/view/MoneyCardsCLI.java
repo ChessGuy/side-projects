@@ -31,7 +31,7 @@ public class MoneyCardsCLI {
         int bid = 0;
         String playerChoice = "";
         final int MAX_ROUND = 8;
-        int changes = 3;
+        int changes = 1;
         int playerBank = 200; //200 for the real game
         int addMoney = 400;
         boolean gameOver = false;
@@ -68,7 +68,9 @@ public class MoneyCardsCLI {
             System.out.printf("You have $%d in your bank and %d %s left.\n", playerBank, changes, changeText);
             if (roundNumber == MAX_ROUND) {
                 int finalBid = playerBank / 2;
-                System.out.printf("\nFINAL ROUND!  You must bid half of your bank ($%d) on this flip.  Good Luck!\n", finalBid);
+                changes = 1;
+                System.out.printf("\nFINAL ROUND!  You must bid half of your bank " +
+                        "($%d) on this flip and you have 1 change left.  Good Luck!\n", finalBid);
             } else {
                 System.out.printf("\nLet's start Round %d!\n", roundNumber);
             }
@@ -131,6 +133,7 @@ public class MoneyCardsCLI {
 
             if (roundNumber == 4) {
                 playerBank += addMoney;
+                changes = 1;
                 System.out.println("You have earned an extra $400 in your bank for making it to Round 4.");
             }
         }
