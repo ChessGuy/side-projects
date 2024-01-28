@@ -26,8 +26,12 @@ public class ScoreBoard {
         String scoreBoardString =
                 "          HIGH SCORES         \n" +
                 "______________________________\n";
-        for (Score score: scores) {
-            scoreBoardString += score.toString() + "\n";
+        for (int i = 1;i <= scores.size(); i++) {
+            String iString = Integer.toString(i);
+            if (iString.length() <= 1) {
+                iString = " " + iString;
+        }
+            scoreBoardString += iString + " " + scores.get(i-1).toString() + "\n";
         }
         return scoreBoardString;
     }
