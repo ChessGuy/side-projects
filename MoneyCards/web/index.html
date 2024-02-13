@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Money Cards</title>
+        <link rel="stylesheet" href="moneycards.css">
+        <script src="moneycards.js"></script>
+    </head>
+
+    <body>
+        <section id="main-board">
+            <h2>Your Bank: <span id="bank"></span></h2>
+            
+            <section id="card-grid">
+
+
+            </section>
+
+            <p id="game-message"></p>
+
+        </section>
+        
+        <h2>Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards">
+            <img id="hidden" src=".web/cards/BACK.png">
+        </div>
+        
+        <h2>You: <span id="your-sum"></span></h2>
+        <div id="your-cards"></div>
+
+        <br>
+        <button id="Higher">Hit</button>
+        <button id="Lower">Stay</button>
+        <button id="Change">Stay</button>
+        <p id="results"></p>
+    </body>
+</html>
