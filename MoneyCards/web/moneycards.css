@@ -8,8 +8,8 @@
 #main-board {
     background-color: green;
     border: gold solid 20px;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 100px;
+    padding: 25px;
     text-align: center;
 }
 
@@ -25,9 +25,9 @@
 #bottom-row {
     grid-area: bottom;
     display: flex;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-area: 
-    "change1 . starter card1 card2 card3";
+    "change1 . starter card1 card2 card3"; */
 }
 
 /* #change-card-1 {
@@ -53,9 +53,9 @@
 #middle-row {
     grid-area: middle;
     display: flex;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-area: 
-    "change2 . row2start card4 card5 card6";
+    "change2 . row2start card4 card5 card6"; */
 }
 
 /* #change-card-2 {
@@ -81,9 +81,9 @@
 #top-row {
     grid-area: top;
     display: flex;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-area: 
-    "change3 . row3start card7 title title";
+    "change3 . row3start card7 title title"; */
 }
 
 /* #change-card-3 {
@@ -107,6 +107,10 @@ div {
     height: 175px;
     width: 125px;
     border: 2px black solid;
+}
+
+#title {
+    width: 250px;
 }
 
 
