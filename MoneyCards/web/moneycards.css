@@ -1,8 +1,14 @@
 #card-grid img {
     /* border: 1px black solid; */
-    margin: 1px;
+    /* margin: 1px; */
     height: 175px;
     width: 125px;
+}
+
+#button-grid {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 #main-board {
@@ -20,6 +26,7 @@
     "top" 
     "middle"
     "bottom";
+    justify-items: center;
 }
 
 #bottom-row {
@@ -110,7 +117,13 @@ div {
 }
 
 #title {
-    width: 250px;
+    width: 255px;
+    height: 175px;
+    margin: 1px;
+    border: 2px black solid;
 }
 
+.change-card {
+    margin-right:  150px;
+}
 

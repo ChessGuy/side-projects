@@ -15,12 +15,12 @@
             <section id="card-grid">
 
                 <section id="bottom-row">
-                    <div id="change-card-1">
-                        <img src="./cards/BACK.png">
+                    <div id="change-card-1" class="change-card">
+                        <img id="change-card-1-img" src="./cards/BACK.png">
                     </div>
                         
                     <div id="starter-card">
-                        <p>starter</p>
+                        <img id='starter-card-img'>
                     </div>
 
                     <div id="card-1">
@@ -38,7 +38,7 @@
                 </section>
 
                 <section id="middle-row">
-                    <div id="change-card-2">
+                    <div id="change-card-2" class="change-card">
                         <img src="./cards/BACK.png">
                     </div>
 
@@ -61,7 +61,7 @@
                 </section>
 
                 <section id="top-row">
-                    <div id="change-card-3">
+                    <div id="change-card-3" class="change-card">
                         <img src="./cards/BACK.png">
                     </div>
 
@@ -81,13 +81,13 @@
 
             </section>
 
-            <p id="game-message"></p>
+            <p id="game-message">Welcome to Card Sharks!  Good Luck!</p>
 
         </section>
 
-            <input id="bet">
-
         <section id="button-grid">
+            <label for="bet">Bet</label>
+                <input id="bet">
             <button id="higher">Higher</button>
             <button id="lower">Lower</button>
             <button id="change">Change</button>
