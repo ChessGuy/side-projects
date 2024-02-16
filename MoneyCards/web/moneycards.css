@@ -127,3 +127,9 @@ div {
     margin-right:  150px;
 }
 
+#bet-message {
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
