@@ -5,15 +5,9 @@ import dao.ScoreDao;
 import model.Score;
 import model.ScoreBoard;
 import org.apache.commons.dbcp2.BasicDataSource;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.util.*;
 
 public class MoneyCardsCLI {
-
 
     //Create a clone of the Card Sharks money cards game
     public MoneyCardsCLI() {
