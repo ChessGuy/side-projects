@@ -24,7 +24,7 @@ public class MoneyCardsCLI {
         int roundNumber = 1;
         int bid = 0;
         String playerChoice = "";
-        final int MAX_ROUND = 8;
+        final int MAX_ROUND = 7;
         int changes = 1;
         int playerBank = 200; //200 for the real game
         int addMoney = 400;

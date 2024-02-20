@@ -2,7 +2,7 @@
 
 let roundNumber = 1; 
 let bid = 0;
-const MAX_ROUND = 8;
+const MAX_ROUND = 7;
 let changes = 1; //Number of changes a player has
 let playerBank = 200;
 const ADDED_MONEY = 400; //Money added to playerBank after round 4
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayMessages ();
     startGame ();
-  
+    
     //Button Event Listeners 
     document.getElementById("higher").addEventListener('click', higher);
     document.getElementById("lower").addEventListener('click', lower);
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Display starter Card
     document.getElementById('starter-card-img').src = "./cards/" + starterCard + ".png";
-
 });
 
 
@@ -177,13 +176,9 @@ function changeCard() {
 
 function playRound () {
     let didPlayerWin = false;
-    console.log(playerChoice);
 
     gameCard1 = getValue(cardBoard[roundNumber - 1]);
     gameCard2 = getValue(cardBoard[roundNumber]);
-
-    console.log(gameCard1);
-    console.log(gameCard2);
 
     if (gameCard2 > gameCard1 && playerChoice == "H") {
         didPlayerWin = true;
@@ -204,10 +199,18 @@ function playRound () {
 
     document.getElementById("card-" + roundNumber + "-img").src = "./cards/" + cardBoard[roundNumber] + ".png"
 
+    if (roundNumber == MAX_ROUND) {
+        gameMessage = "Game Over!"
+        isGameOver = true;
+        displayMessages ();
+        return;
+    }
+
     roundNumber++;
     gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
     
     displayMessages ();
+    console.log(roundNumber);
 }
 
 
