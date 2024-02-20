@@ -187,7 +187,7 @@ function playRound () {
     }
 
     if (gameCard1 === gameCard2) {
-        resultsMessage = "Push! You keep your bet for the next round.";
+        resultsMessage = "Push! You keep your bet.";
     } else if (didPlayerWin) {
         resultsMessage = "YES! You guessed correctly!  Your bid of $" + bid + " has been added to your bank.";
         playerBank += parseInt(bid);
@@ -210,7 +210,6 @@ function playRound () {
     gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
     
     displayMessages ();
-    console.log(roundNumber);
 }
 
 
