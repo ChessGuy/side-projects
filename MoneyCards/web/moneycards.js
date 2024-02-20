@@ -90,13 +90,13 @@ function getValue(card) {
             return 13;
         } else if (value == "Q") {
             return 12;
-        } else if (value == "J") {
+        } else  {
             return 11;
-        } else {
-            return parseInt(value);
+        }
+    } else {
+        return parseInt(value);
         }
     }
-}
 
 function isValidBid () {
     let finalBid = playerBank / 2;
@@ -177,13 +177,17 @@ function changeCard() {
 
 function playRound () {
     let didPlayerWin = false;
+    console.log(playerChoice);
 
     gameCard1 = getValue(cardBoard[roundNumber - 1]);
     gameCard2 = getValue(cardBoard[roundNumber]);
 
-    if ((gameCard2 > gameCard1) && playerChoice === "H") {
+    console.log(gameCard1);
+    console.log(gameCard2);
+
+    if (gameCard2 > gameCard1 && playerChoice == "H") {
         didPlayerWin = true;
-    } else if ((gameCard2 < gameCard1) && playerChoice === "L") {
+    } else if (gameCard2 < gameCard1 && playerChoice == "L") {
         didPlayerWin = true;
     }
 
@@ -196,6 +200,7 @@ function playRound () {
         resultsMessage = "NO!  Your guess was wrong!  You lose your bid of $" + bid + " from your bank."
         playerBank -= parseInt(bid);
     } 
+    console.log(didPlayerWin);
 
     document.getElementById("card-" + roundNumber + "-img").src = "./cards/" + cardBoard[roundNumber] + ".png"
     displayMessages ();
