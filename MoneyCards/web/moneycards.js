@@ -159,13 +159,20 @@ function lower () {
 }
 
 function changeCard() {
+    let newCard = changeCards.pop()
     if (changes == 0) {
         betMessage = "You have no changes remaining."
         displayMessages();
     } else {
-        cardBoard[roundNumber - 1] = changeCards.pop();
+        cardBoard[roundNumber - 1] = newCard;
         changes -= 1;
     } 
+    if (roundNumber == 1) {
+        document.getElementById("starter-card-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+
+    } else {
+        document.getElementById("card-" + (roundNumber - 1) + "-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+    }
 }
 
 function playRound () {
@@ -180,7 +187,7 @@ function playRound () {
         didPlayerWin = true;
     }
 
-    if (gameCard1 == gameCard2) {
+    if (gameCard1 === gameCard2) {
         resultsMessage = "Push! You keep your bet for the next round.";
     } else if (didPlayerWin) {
         resultsMessage = "YES! You guessed correctly!  Your bid of $" + bid + " has been added to your bank.";
@@ -189,6 +196,8 @@ function playRound () {
         resultsMessage = "NO!  Your guess was wrong!  You lose your bid of $" + bid + " from your bank."
         playerBank -= parseInt(bid);
     } 
+
+    document.getElementById("card-" + roundNumber + "-img").src = "./cards/" + cardBoard[roundNumber] + ".png"
     displayMessages ();
     roundNumber ++;
     gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
