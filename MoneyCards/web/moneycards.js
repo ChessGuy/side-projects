@@ -11,18 +11,31 @@ let isGameOver = false; //Tracks if the game is still going
 let deck = []; //Placeholder for game card deck
 let starterCard, change1, change2, change3, card1, card2, card3, card4, card5, card6, card7;
 
+let cardBoard = [starterCard, card1, card2, card3, card4, card5, card6, card7];
+let changeCards = [change1, change2, change3];
+
 let resultsMessage = "Welcome to Card Sharks!";
 let gameMessage = "Good Luck!";
-let betMessage = "Increments of $50";
+let betMessage = "";
+
+let playerChoice = "";
 
 
 //Game Loop
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.getElementById("bank").innerText = '$' + playerBank;
+    displayMessages ();
+    buildDeck ();
+    shuffleDeck ();
+    dealStartingCards ();
+    
+    //Button Event Listeners 
+    document.getElementById("higher").addEventListener('click', higher);
+    document.getElementById("lower").addEventListener('click', lower);
+    document.getElementById("change").addEventListener('click', changeCard);
 
-    displayMessages();
+    //Display starter Card
 
 });
 
@@ -84,13 +97,21 @@ function getValue(card) {
     }
 }
 
-function checkPlayerBid () {
+function isValidBid () {
     let finalBid = playerBank / 2;
 
-    while (bid > playerBank || bid % 50 != 0) {
-        
+    if (bid > playerBank || bid % 50 != 0 || bid < 0) {
+        betMessage = "Invalid bid. Please try again.";
+        displayMessages ();
+        return false; 
     }
 
+    if (roundNumber === MAX_ROUND && (bid < finalBid)) {
+        betMessage = "You must bid at least half of your bank ( " + finalBid + ")."
+        displayMessages ();
+        return false;
+    }
+    return true;
 
 }
 
@@ -100,3 +121,41 @@ function displayMessages () {
     document.getElementById("results-message").innerText = resultsMessage;
     document.getElementById("bet-message").innerText = betMessage;
 }
+
+function higher () {
+    bid = document.getElementById("bet").value;
+
+    if (isValidBid()) {
+        betMessage = "";
+        displayMessages ();
+    } else {
+        return;
+    }
+
+    playerChoice = "H";
+
+}
+
+function lower () {
+    bid = document.getElementById("bet").value;
+
+    if (isValidBid()) {
+        betMessage = "";
+        displayMessages ();
+    } else {
+        return;
+    }
+
+    playerChoice = "L";
+}
+
+function changeCard() {
+    if (changes == 0) {
+        betMessage = "You have no changes remaining"
+        displayMessages();
+    } else {
+        cardBoard[roundNumber - 1] = changeCards.pop();
+        changes -= 1;
+    }
+}
+
