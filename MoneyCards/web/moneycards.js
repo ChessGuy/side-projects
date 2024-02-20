@@ -11,9 +11,20 @@ let isGameOver = false; //Tracks if the game is still going
 let deck = []; //Placeholder for game card deck
 let starterCard, change1, change2, change3, card1, card2, card3, card4, card5, card6, card7;
 
+let resultsMessage = "Welcome to Card Sharks!";
+let gameMessage = "Good Luck!";
+let betMessage = "Increments of $50";
+
+
 //Game Loop
 
+document.addEventListener('DOMContentLoaded', () => {
 
+    document.getElementById("bank").innerText = '$' + playerBank;
+
+    displayMessages();
+
+});
 
 
 
@@ -71,4 +82,21 @@ function getValue(card) {
             return parseInt(value);
         }
     }
+}
+
+function checkPlayerBid () {
+    let finalBid = playerBank / 2;
+
+    while (bid > playerBank || bid % 50 != 0) {
+        
+    }
+
+
+}
+
+function displayMessages () {
+    document.getElementById("bank").innerText = '$' + playerBank;
+    document.getElementById("game-message").innerText = gameMessage;
+    document.getElementById("results-message").innerText = resultsMessage;
+    document.getElementById("bet-message").innerText = betMessage;
 }
