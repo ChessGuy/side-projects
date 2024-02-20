@@ -14,12 +14,13 @@ let starterCard, change1, change2, change3, card1, card2, card3, card4, card5, c
 let cardBoard = [starterCard, card1, card2, card3, card4, card5, card6, card7];
 let changeCards = [change1, change2, change3];
 
-let resultsMessage = "Welcome to Card Sharks!";
-let gameMessage = "Good Luck!";
+let resultsMessage = "Welcome to Card Sharks! Good Luck!";
+let gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
 let betMessage = "";
 
 let playerChoice = "";
 
+let gameCard1, gameCard2; //Used for the playRound function
 
 //Game Loop
 
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayMessages ();
     startGame ();
-   
+  
     //Button Event Listeners 
     document.getElementById("higher").addEventListener('click', higher);
     document.getElementById("lower").addEventListener('click', lower);
@@ -100,7 +101,7 @@ function getValue(card) {
 function isValidBid () {
     let finalBid = playerBank / 2;
 
-    if (bid > playerBank || bid % 50 != 0 || bid < 0) {
+    if (bid > playerBank || bid % 50 != 0 || bid < 1) {
         betMessage = "Invalid bid. Please try again.";
         displayMessages ();
         return false; 
@@ -139,6 +140,7 @@ function higher () {
     }
 
     playerChoice = "H";
+    playRound ();
 
 }
 
@@ -153,15 +155,44 @@ function lower () {
     }
 
     playerChoice = "L";
+    playRound ();
 }
 
 function changeCard() {
     if (changes == 0) {
-        betMessage = "You have no changes remaining"
+        betMessage = "You have no changes remaining."
         displayMessages();
     } else {
         cardBoard[roundNumber - 1] = changeCards.pop();
         changes -= 1;
-    }
+    } 
 }
+
+function playRound () {
+    let didPlayerWin = false;
+
+    gameCard1 = getValue(cardBoard[roundNumber - 1]);
+    gameCard2 = getValue(cardBoard[roundNumber]);
+
+    if ((gameCard2 > gameCard1) && playerChoice === "H") {
+        didPlayerWin = true;
+    } else if ((gameCard2 < gameCard1) && playerChoice === "L") {
+        didPlayerWin = true;
+    }
+
+    if (gameCard1 == gameCard2) {
+        resultsMessage = "Push! You keep your bet for the next round.";
+    } else if (didPlayerWin) {
+        resultsMessage = "YES! You guessed correctly!  Your bid of $" + bid + " has been added to your bank.";
+        playerBank += parseInt(bid);
+    } else {
+        resultsMessage = "NO!  Your guess was wrong!  You lose your bid of $" + bid + " from your bank."
+        playerBank -= parseInt(bid);
+    } 
+    displayMessages ();
+    roundNumber ++;
+    gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
+
+}
+
 
