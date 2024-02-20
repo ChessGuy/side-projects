@@ -203,10 +203,11 @@ function playRound () {
     console.log(didPlayerWin);
 
     document.getElementById("card-" + roundNumber + "-img").src = "./cards/" + cardBoard[roundNumber] + ".png"
-    displayMessages ();
-    roundNumber ++;
-    gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
 
+    roundNumber++;
+    gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
+    
+    displayMessages ();
 }
 
 
