@@ -26,16 +26,15 @@ let playerChoice = "";
 document.addEventListener('DOMContentLoaded', () => {
 
     displayMessages ();
-    buildDeck ();
-    shuffleDeck ();
-    dealStartingCards ();
-    
+    startGame ();
+   
     //Button Event Listeners 
     document.getElementById("higher").addEventListener('click', higher);
     document.getElementById("lower").addEventListener('click', lower);
     document.getElementById("change").addEventListener('click', changeCard);
 
     //Display starter Card
+    document.getElementById('starter-card-img').src = "./cards/" + starterCard + ".png";
 
 });
 
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function buildDeck() {
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     let types = ["C", "D", "H", "S"];
-    deck = [];
 
     for (let i=0; i < types.length; i++) {
         for (let j=0; j < values.length; j++) {
@@ -76,6 +74,8 @@ function dealStartingCards () {
     card5 = deck.pop();
     card6 = deck.pop();
     card7 = deck.pop();
+    cardBoard = [starterCard, card1, card2, card3, card4, card5, card6, card7];
+    changeCards = [change1, change2, change3];
 }
 
 function getValue(card) {
@@ -120,6 +120,12 @@ function displayMessages () {
     document.getElementById("game-message").innerText = gameMessage;
     document.getElementById("results-message").innerText = resultsMessage;
     document.getElementById("bet-message").innerText = betMessage;
+}
+
+function startGame () {
+    buildDeck ();
+    shuffleDeck ();
+    dealStartingCards ();
 }
 
 function higher () {
