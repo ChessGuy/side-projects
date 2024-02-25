@@ -129,21 +129,28 @@ function startGame () {
 }
 
 function higher () {
+    if (isGameOver) {
+        return;
+    } 
     bid = document.getElementById("bet").value;
 
     if (isValidBid()) {
-        betMessage = "";
+        betMessage = "";            
         displayMessages ();
     } else {
         return;
     }
 
     playerChoice = "H";
-    playRound ();
-
+    playRound ();    
+    
 }
 
 function lower () {
+    if (isGameOver) {
+        return;
+    } 
+
     bid = document.getElementById("bet").value;
 
     if (isValidBid()) {
@@ -158,6 +165,10 @@ function lower () {
 }
 
 function changeCard() {
+    if (isGameOver) {
+        return;
+    } 
+
     let newCard = changeCards.pop()
     if (changes == 0) {
         betMessage = "You have no changes remaining."
@@ -207,9 +218,12 @@ function playRound () {
     }
 
     roundNumber++;
+
+    
     gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
     
     displayMessages ();
 }
+
 
 
