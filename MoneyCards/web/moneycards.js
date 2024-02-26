@@ -220,9 +220,29 @@ function playRound () {
     roundNumber++;
 
     
-    gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
-    
+
+    if (playerBank <= 0) {
+        if (roundNumber < 4) {
+            roundNumber = 4;
+            gameMessage += "\nYou have busted before round 4!";
+        } else if (roundNumber < MAX_ROUND) {
+            gameMessage = "You busted! Game Over!"
+            isGameOver = true;
+            }
+        }
+
+    gameMessage = "Let's start round " + roundNumber + "!";
+
+    if (roundNumber == 4) {
+        playerBank += ADDED_MONEY;
+        changes = 1;
+        gameMessage += "\nYou have an extra $400 in your bank.\n"
+    }
+
+    gameMessage += "\n Is the next card higher or lower?";
+
     displayMessages ();
+
 }
 
 
