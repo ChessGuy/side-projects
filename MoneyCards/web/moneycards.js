@@ -17,6 +17,7 @@ let changeCards = [change1, change2, change3];
 let resultsMessage = "Welcome to Card Sharks! Good Luck!";
 let gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
 let betMessage = "";
+let didBustEarly = false; //Track if a player busted before the 4th round
 
 let playerChoice = "";
 
@@ -240,21 +241,79 @@ function playRound () {
 
     if (playerBank <= 0) {
         if (roundNumber < 4) {
-            roundNumber = 4;
-            gameMessage += "\nYou have busted before round 4!";
-        } else if (roundNumber < MAX_ROUND) {
-            gameMessage = "You busted! Game Over!"
-            isGameOver = true;
+            
+            didBustEarly = true;
+            let secondRowStartDiv = document.getElementById('row-2-start');
+            let secondRowCard = document.createElement('img');
+            secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+            
+            while (secondRowStartDiv.firstChild) {
+                secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
             }
-        }
+            
+            secondRowStartDiv.appendChild(secondRowCard);
 
-    gameMessage = "Let's start round " + roundNumber + "!";
+            let endCardDiv = document.getElementById('card-' + (roundNumber - 1));
+
+            while (endCardDiv.firstChild) {
+                endCardDiv.removeChild(endCardDiv.firstChild);
+            }  
+
+                roundNumber = 4;
+                gameMessage += "\nYou have busted before round 4!";
+            } else if (roundNumber < MAX_ROUND) {
+                gameMessage = "You busted! Game Over!"
+                isGameOver = true;
+                }
+            }
+
+    if (roundNumber == MAX_ROUND) {
+        gameMessage = "Let's start the FINAL ROUND!\nThe BIG BET requires you to bet at least half of your bank."
+        let bigBetStartDiv = document.getElementById('row-3-start');
+        let bigBetCard = document.createElement('img');
+        bigBetCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+        while (bigBetStartDiv.firstChild) {
+            bigBetStartDiv.removeChild(bigBetStartDiv.firstChild);
+        }
+        
+        bigBetStartDiv.appendChild(bigBetCard);
+
+        let endSecondRowDiv = document.getElementById('card-6');
+
+        while (endSecondRowDiv.firstChild) {
+            endSecondRowDiv.removeChild(endSecondRowDiv.firstChild);
+        }  
+
+    } else {
+        gameMessage = "Let's start round " + roundNumber + "!";
+    }
 
     if (roundNumber == 4) {
         playerBank += ADDED_MONEY;
         changes = 1;
         gameMessage += "\nYou have an extra $400 in your bank.\n"
-    }
+
+        //Check if last card in first row has a card.  If it does, bring it to the next row.
+
+        if (!didBustEarly) {
+
+            let secondRowStartDiv = document.getElementById('row-2-start');
+            let secondRowCard = document.createElement('img');
+            secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+            while (secondRowStartDiv.firstChild) {
+                secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
+            }
+            
+            secondRowStartDiv.appendChild(secondRowCard);
+
+            let endFirstRowDiv = document.getElementById('card-3');
+
+            while (endFirstRowDiv.firstChild) {
+                endFirstRowDiv.removeChild(endFirstRowDiv.firstChild);
+            }  
+        }
+        
+    } 
 
     gameMessage += "\n Is the next card higher or lower?";
 
