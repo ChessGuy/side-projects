@@ -170,6 +170,7 @@ function changeCard() {
     } 
 
     let newCard = changeCards.pop()
+
     if (changes == 0) {
         betMessage = "You have no changes remaining."
         displayMessages();
@@ -177,11 +178,29 @@ function changeCard() {
         cardBoard[roundNumber - 1] = newCard;
         changes -= 1;
     } 
+
     if (roundNumber == 1) {
         document.getElementById("starter-card-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
 
     } else {
         document.getElementById("card-" + (roundNumber - 1) + "-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+    }
+
+    if (roundNumber < 4) {
+        let changeDiv1 = document.getElementById('change-card-1');
+        while (changeDiv1.firstChild) {
+            changeDiv1.removeChild(changeDiv1.firstChild);
+        }
+    } else if (roundNumber == MAX_ROUND) {
+        let changeDiv3 = document.getElementById('change-card-3');
+        while (changeDiv3.firstChild) {
+            changeDiv3.removeChild(changeDiv3.firstChild);
+        }
+    } else {
+        let changeDiv2 = document.getElementById('change-card-2');
+        while (changeDiv2.firstChild) {
+            changeDiv2.removeChild(changeDiv2.firstChild);
+        }
     }
 }
 
