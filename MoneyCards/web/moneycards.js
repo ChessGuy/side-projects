@@ -219,8 +219,6 @@ function playRound () {
 
     roundNumber++;
 
-    
-
     if (playerBank <= 0) {
         if (roundNumber < 4) {
             roundNumber = 4;
