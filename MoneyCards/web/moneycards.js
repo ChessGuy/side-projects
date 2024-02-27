@@ -178,11 +178,13 @@ function changeCard() {
     } else {
         cardBoard[roundNumber - 1] = newCard;
         changes -= 1;
-    } 
 
     if (roundNumber == 1) {
         document.getElementById("starter-card-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
-
+    } else if (roundNumber == 4) {
+        document.getElementById("row-2-start-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+    } else if (roundNumber == MAX_ROUND) {
+        document.getElementById("row-3-start-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
     } else {
         document.getElementById("card-" + (roundNumber - 1) + "-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
     }
@@ -203,6 +205,7 @@ function changeCard() {
             changeDiv2.removeChild(changeDiv2.firstChild);
         }
     }
+}
 }
 
 function playRound () {
@@ -268,6 +271,7 @@ function playRound () {
             }
 
     if (roundNumber == MAX_ROUND) {
+        changes = 1;
         gameMessage = "Let's start the FINAL ROUND!\nThe BIG BET requires you to bet at least half of your bank."
         let bigBetStartDiv = document.getElementById('row-3-start');
         let bigBetCard = document.createElement('img');
