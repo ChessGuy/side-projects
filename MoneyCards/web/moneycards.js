@@ -226,7 +226,6 @@ function playRound () {
         resultsMessage = "NO!  Your guess was wrong!  You lose your bid of $" + bid + " from your bank."
         playerBank -= parseInt(bid);
     } 
-    console.log(didPlayerWin);
 
     document.getElementById("card-" + roundNumber + "-img").src = "./cards/" + cardBoard[roundNumber] + ".png"
 
@@ -245,6 +244,7 @@ function playRound () {
             didBustEarly = true;
             let secondRowStartDiv = document.getElementById('row-2-start');
             let secondRowCard = document.createElement('img');
+            secondRowCard.setAttribute('id', 'row-2-start-img');
             secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
             
             while (secondRowStartDiv.firstChild) {
@@ -271,6 +271,7 @@ function playRound () {
         gameMessage = "Let's start the FINAL ROUND!\nThe BIG BET requires you to bet at least half of your bank."
         let bigBetStartDiv = document.getElementById('row-3-start');
         let bigBetCard = document.createElement('img');
+        bigBetCard.setAttribute('id', 'row-3-start-img');
         bigBetCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
         while (bigBetStartDiv.firstChild) {
             bigBetStartDiv.removeChild(bigBetStartDiv.firstChild);
@@ -299,6 +300,7 @@ function playRound () {
 
             let secondRowStartDiv = document.getElementById('row-2-start');
             let secondRowCard = document.createElement('img');
+            secondRowCard.setAttribute('id','row-2-start-img');
             secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
             while (secondRowStartDiv.firstChild) {
                 secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
