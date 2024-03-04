@@ -18,7 +18,7 @@ public class MoneyCardsApplication {
 		SpringApplication.run(MoneyCardsApplication.class, args);
 
 		// Command Line Interface
-		new MoneyCardsCLI();
+		// new MoneyCardsCLI();
 	}
 
 }
