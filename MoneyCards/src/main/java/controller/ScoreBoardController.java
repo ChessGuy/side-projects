@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class ScoreBoardController {
 
@@ -34,6 +35,10 @@ public class ScoreBoardController {
     // Score createScore (Score score);
 
     // Score getLowestScore ();
+    @RequestMapping(path = "/scores/lowest", method = RequestMethod.GET)
+    public Score get (){
+        return scoreDao.getLowestScore();
+    }
 
     // int deleteLowestScore ();
 
