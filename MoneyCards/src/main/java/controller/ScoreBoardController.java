@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScoreBoardController {
 
     private final ScoreDao scoreDao;
+    
     public ScoreBoardController (ScoreDao scoreDao){
         this.scoreDao = scoreDao;
     }
