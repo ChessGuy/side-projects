@@ -1,8 +1,8 @@
-package dao;
-
-import model.Score;
+package com.sideprojects.MoneyCards.dao;
 
 import java.util.List;
+
+import com.sideprojects.MoneyCards.model.Score;
 
 public interface ScoreDao {
 

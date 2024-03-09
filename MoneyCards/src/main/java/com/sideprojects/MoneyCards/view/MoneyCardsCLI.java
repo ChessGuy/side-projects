@@ -1,10 +1,12 @@
-package view;
+package com.sideprojects.MoneyCards.view;
 
-import dao.JdbcScoreDao;
-import dao.ScoreDao;
-import model.Score;
-import model.ScoreBoard;
 import org.apache.commons.dbcp2.BasicDataSource;
+
+import com.sideprojects.MoneyCards.dao.JdbcScoreDao;
+import com.sideprojects.MoneyCards.dao.ScoreDao;
+import com.sideprojects.MoneyCards.model.Score;
+import com.sideprojects.MoneyCards.model.ScoreBoard;
+
 import java.util.*;
 
 public class MoneyCardsCLI {

@@ -1,12 +1,13 @@
-package dao;
+package com.sideprojects.MoneyCards.dao;
 
-import exception.DaoException;
-import model.Score;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import com.sideprojects.MoneyCards.exception.DaoException;
+import com.sideprojects.MoneyCards.model.Score;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class JdbcScoreDao implements ScoreDao{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public JdbcScoreDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    // public JdbcScoreDao(JdbcTemplate jdbcTemplate) {
+    //     this.jdbcTemplate = jdbcTemplate;
+    // }
 
     private Score mapRowToScore(SqlRowSet rowSet) {
         Score score = new Score();

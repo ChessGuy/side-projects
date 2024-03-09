@@ -1,4 +1,4 @@
-package exception;
+package com.sideprojects.MoneyCards.exception;
 
 public class DaoException extends RuntimeException {
     public DaoException() {

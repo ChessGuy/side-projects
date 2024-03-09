@@ -1,4 +1,4 @@
-package model;
+package com.sideprojects.MoneyCards.model;
 
 import java.sql.SQLOutput;
 import java.util.List;
