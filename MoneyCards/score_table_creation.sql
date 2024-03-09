@@ -19,7 +19,7 @@ VALUES
 	('___', 4000),
 	('___', 3000),
 	('___', 2000),
-	('___', 1000)
+	('___', 0)
 ;
 
 -- -- Testing SQL Queries to handle adding scores and deleting the last one in order
