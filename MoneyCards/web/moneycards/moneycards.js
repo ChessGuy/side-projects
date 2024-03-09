@@ -236,6 +236,8 @@ function playRound () {
         gameMessage = "Game Over!"
         isGameOver = true;
         displayMessages ();
+
+        document.getElementById('score-form').style.display('block') //Popup for score form
         return;
     }
 
