@@ -13,3 +13,9 @@ const getScores = async () => {
       console.error(errors);
     }
   };
+
+  const main = async () => {
+    await getScores ();
+  };
+  
+  main();
