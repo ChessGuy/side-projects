@@ -12,14 +12,15 @@
     </head>
 
     <body>
-        <section id="main-board">
+        <section id="game-board">
+            <section id="main-board">
 
             <!-- <h2>Changes</h2> -->
-            
+            <h2>Your Bank: <span id="bank"></span></h2>
+
         
             <section id="card-grid">
-                <h2>Your Bank: <span id="bank"></span></h2>
-                
+
                 <section id="bottom-row">
                     <div id="change-card-1" class="change-card">
                         <img id="change-card-1-img" src="./cards/BACK.png">
@@ -91,23 +92,20 @@
                     <p id ="game-message"></p>
                 </section>
 
-
-
             </section>
 
             
-
+        </section>
         <section id="button-grid">
             <label for="bet">Bet (Increments of $50)</label>
                 <input id="bet" placeholder="Enter bet here">
             <button id="higher">Higher</button>
             <button id="lower">Lower</button>
             <button id="change">Change</button>
-            
+            <p id="bet-message"></p>
         </section>
-
-        <p id="bet-message"></p>
         
+
         <table id="score-table">
         <tr>
             <th colspan="2">HIGH SCORES</th>
@@ -142,8 +140,11 @@
         <tr>
             <td>10.</td><td>0</td>
         </tr>
-        </table>        
+        </table>    
+
+        </section>
+            
         
-    </section>
+    
     </body>
 </html>

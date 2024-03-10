@@ -13,15 +13,13 @@
 }
 
 #main-board {
-    background-color: green;
-    border: gold solid 20px;
-    border-radius: 100px;
-    padding: 25px;
+    grid-area: board;
+    
     text-align: center;
 }
 
 #card-grid {
-    grid-area: board;
+    
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -75,7 +73,11 @@ div {
     color: red;
 }
 
-#main-board {
+#game-board {
+    background-color: green;
+    border: gold solid 20px;
+    border-radius: 100px;
+    padding: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -85,6 +87,10 @@ div {
 
 .score-table {
     grid-area: score;
+}
+
+body {
+    background-color: lightblue;
 }
 
 
