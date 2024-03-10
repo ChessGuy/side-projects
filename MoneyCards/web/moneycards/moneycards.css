@@ -5,6 +5,10 @@
     width: 125px;
 }
 
+/* body {
+    margin: 0;
+} */
+
 #button-grid {
     border: solid 2px black;
     grid-area: bet;
@@ -65,7 +69,8 @@ div {
 }
 
 .change-card {
-    margin-right:  150px;
+    /* margin-right:  150px; */
+    margin-right: 10vw;
 }
 
 #bet-message {
@@ -80,6 +85,8 @@ div {
     border-radius: 100px;
     padding: 25px;
     display: grid;
+    height: 90vh;
+    /* width: 100vw; */
     grid-template-columns: 1.8fr 0.2fr;
     grid-template-areas: 
     "board bet"
