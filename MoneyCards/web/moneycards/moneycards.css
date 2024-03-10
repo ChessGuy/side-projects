@@ -6,9 +6,10 @@
 }
 
 #button-grid {
+    border: solid 2px black;
     grid-area: bet;
     margin-top: 30px;
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 
