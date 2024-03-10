@@ -6,7 +6,7 @@
 }
 
 /* body {
-    margin: 0;
+    height: 90vh;
 } */
 
 #button-grid {
@@ -85,7 +85,9 @@ div {
     border-radius: 100px;
     padding: 25px;
     display: grid;
-    height: 90vh;
+    height: 100vh;
+    min-height: 700px;
+    max-height: 750px;
     min-width: 700px;
     /* width: 100vw; */
     grid-template-columns: 1.8fr 0.2fr;
