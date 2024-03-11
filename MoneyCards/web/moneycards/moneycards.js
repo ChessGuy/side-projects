@@ -245,7 +245,13 @@ function playRound () {
         isGameOver = true;
         displayMessages ();
 
-        document.getElementById('score-form').style.display('block') //Popup for score form
+        let playerInitials = "";
+        while (playerInitials.length != 3) {
+            playerInitials = prompt("You beat a High Score!  \n Enter your initials (ABC format): ") 
+        }
+        console.log(playerInitials);
+
+        //Add logic to print initials and score to database
         return;
     }
 
