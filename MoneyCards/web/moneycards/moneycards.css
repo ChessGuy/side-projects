@@ -28,6 +28,8 @@
 #higher, #lower, #change {
     color: black;
     border: black 1px solid;
+    border-radius: 10px;
+    font-size: 16px;
 } 
 
 #bet {
@@ -105,13 +107,14 @@ div {
 }
 
 #button-grid {
-    border: solid 2px black;
+    /* border: solid 2px black; */
     grid-area: button;
     margin-top: 20px;
     justify-content: center;
     /* margin-bottom: 25px; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.9fr 0.5fr;
     grid-template-areas: 
     "bet-label bet-label bet-label"
     "bet bet bet"
@@ -137,8 +140,7 @@ div {
 }
 
 #bet-label, #bet {
-    height: 20px;
-    margin-bottom: -15px;
+    height: auto;
 }
 
 #bet-label {
@@ -152,7 +154,7 @@ div {
 #higher, #lower, #change {
     height: 100%;
     margin: 0;
-    width: 100px;
+    width: auto;
     margin-top: 0;
 }
 
