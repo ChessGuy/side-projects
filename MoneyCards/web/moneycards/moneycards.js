@@ -181,7 +181,7 @@ function changeCard() {
     let newCard = changeCards.pop()
 
     if (changes == 0) {
-        betMessage = "You have no changes remaining."
+        betMessage = "** You have no changes remaining. **"
         displayMessages();
     } else {
         cardBoard[roundNumber - 1] = newCard;
