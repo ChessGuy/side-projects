@@ -197,9 +197,10 @@ div {
 
 #score-table {
     grid-area: score;
-    background-color: azure;
+    background: linear-gradient(azure, rgb(156, 253, 235));
+    /* background-color: azure; */
     text-align: center;
-    border: black solid 10px;
+    border: black solid 5px;
     margin: 10px;
     margin-bottom: 40px;
     margin-top: -150px;
