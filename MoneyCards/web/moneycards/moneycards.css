@@ -1,3 +1,7 @@
+* {
+    color: azure;
+}
+
 #card-grid img {
     /* border: 1px black solid; */
     /* margin: 1px; */
@@ -16,6 +20,12 @@
     display: grid;
     justify-content: center;
 }
+
+#higher, #lower, #change {
+    color: black;
+    background-color: lightgrey;
+    border: black 1px solid;
+}   
 
 #main-board {
     grid-area: board;
@@ -41,6 +51,10 @@
     "change1 . starter card1 card2 card3"; */
 }
 
+#messages-grid p {
+    font-size: 20px;
+}
+
 
 #middle-row {
     grid-area: middle;
@@ -52,19 +66,27 @@
     display: flex;
 }
 
-
+#bank-text {
+    font-size: 30px;
+}
 div {
     margin: 1px;
     height: 175px;
     width: 125px;
-    border: 2px black solid;
+    border: 2px azure solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 
 #title {
     width: 255px;
     height: 175px;
     margin: 1px;
-    border: 2px black solid;
+    border: 2px azure solid;
+    font-size: 50px;
 }
 
 .change-card {
@@ -103,6 +125,18 @@ div {
     /* padding: 125px; */
     border-radius: 25px;
     width: 20vw;
+    
+}
+
+#score-table td {
+    color: black;
+    font-size: 16px;
+}
+
+#score-table th {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 body {
@@ -137,7 +171,12 @@ body {
         /* margin-top: 50px; */
         margin-bottom: 25px;
         grid-area: bet;
+        display: grid;
     }
+
+    /* #higher, #lower, #change {
+        width: 100%;
+    } */
 }
 
 
