@@ -40,7 +40,7 @@
 }
 
 #card-grid {
-    
+    /* border: black 1px solid; */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 
@@ -78,6 +78,8 @@
 }
 div {
     margin: 1px;
+    margin-bottom: 10px;
+    margin-left: 5px;
     height: 175px;
     width: 125px;
     border: 2px azure solid;
@@ -89,9 +91,10 @@ div {
 }
 
 #title {
-    width: 255px;
+    width: 260px;
     height: 175px;
     margin: 1px;
+    margin-left: 5px;
     border: 2px azure solid;
     font-size: 50px;
 }
