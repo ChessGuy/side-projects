@@ -19,7 +19,6 @@
 
 #main-board {
     grid-area: board;
-    
     text-align: center;
 }
 
@@ -89,7 +88,6 @@ div {
     min-height: 700px;
     max-height: 750px;
     min-width: 700px;
-    /* width: 100vw; */
     grid-template-columns: 1.8fr 0.2fr;
     grid-template-areas: 
     "board bet"
@@ -109,6 +107,35 @@ div {
 
 body {
     background-color: aqua;
+}
+
+@media only screen and (max-width: 1050px) {
+    #game-board {
+        display: grid;
+        /* max-height: 10000px; */
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "board" 
+        "bet"
+        "score";
+    }
+
+    #main-board {
+        grid-area: board;
+        text-align: center;
+    }
+
+    #score-table {
+        grid-area: score;
+        margin: 0;
+        width: 100%
+    }
+
+    #button-grid {
+        margin-top: 50px;
+        margin-bottom: 25px;
+        grid-area: bet;
+    }
 }
 
 
