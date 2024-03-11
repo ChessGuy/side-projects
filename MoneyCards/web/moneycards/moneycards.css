@@ -21,11 +21,18 @@
     justify-content: center;
 }
 
+#button-grid label{
+    font-size: 20px;
+}
+
 #higher, #lower, #change {
     color: black;
-    background-color: lightgrey;
     border: black 1px solid;
-}   
+} 
+
+#bet {
+    color: black
+}
 
 #main-board {
     grid-area: board;
@@ -78,7 +85,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #title {
@@ -97,11 +104,15 @@ div {
 #bet-message {
     display: flex;
     justify-content: center;
-    color: red;
+    color: white;
+    /* background-color: red; */
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 20px;
 }
 
 #game-board {
-    background-color: green;
+    background: linear-gradient(rgb(28, 162, 28), green);
     border: gold solid 20px;
     border-radius: 100px;
     padding: 25px;
