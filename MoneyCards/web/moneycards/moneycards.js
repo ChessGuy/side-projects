@@ -101,14 +101,22 @@ function getValue(card) {
 function isValidBid () {
     let finalBid = playerBank / 2;
 
-    if (bid > playerBank || bid % 50 != 0 || bid < 1) {
-        betMessage = "Invalid bid. Please try again.";
+    if (bid > playerBank) {
+        betMessage = "** Your bet cannot exceed your bank. **";
         displayMessages ();
         return false; 
-    }
+    } else if (bid < 1) {
+        betMessage = "** Bet cannot be negative. **";
+        displayMessages ();
+        return false; 
+    } else if (bid % 50 != 0) {
+        betMessage = "** Bet must be an increment of 50. **";
+        displayMessages ();
+        return false; 
+    } 
 
     if (roundNumber === MAX_ROUND && (bid < finalBid)) {
-        betMessage = "You must bid at least half of your bank ( " + finalBid + ")."
+        betMessage = "** You must bet at least half of your bank (" + finalBid + "). **"
         displayMessages ();
         return false;
     }
@@ -274,7 +282,7 @@ function playRound () {
 
     if (roundNumber == MAX_ROUND) {
         changes = 1;
-        gameMessage = "Let's start the FINAL ROUND!\nThe BIG BET requires you to bet at least half of your bank."
+        gameMessage = "Let's start the FINAL ROUND!  You must bet at least half of your bank."
         let bigBetStartDiv = document.getElementById('row-3-start');
         let bigBetCard = document.createElement('img');
         bigBetCard.setAttribute('id', 'row-3-start-img');
@@ -298,7 +306,7 @@ function playRound () {
     if (roundNumber == 4) {
         playerBank += ADDED_MONEY;
         changes = 1;
-        gameMessage += "\nYou have an extra $400 in your bank.\n"
+        gameMessage += "  You have an extra $400 in your bank."
 
         //Check if last card in first row has a card.  If it does, bring it to the next row.
 
