@@ -102,7 +102,7 @@ function isValidBid () {
     let finalBid = playerBank / 2;
 
     if (bid > playerBank) {
-        betMessage = "** Your bet cannot exceed your bank. **";
+        betMessage = "** Bet cannot exceed your bank. **";
         displayMessages ();
         return false; 
     } else if (bid < 1) {
@@ -116,7 +116,7 @@ function isValidBid () {
     } 
 
     if (roundNumber === MAX_ROUND && (bid < finalBid)) {
-        betMessage = "** You must bet at least half of your bank (" + finalBid + "). **"
+        betMessage = "** Must bet at least $" + finalBid + ". **"
         displayMessages ();
         return false;
     }
