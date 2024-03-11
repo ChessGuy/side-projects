@@ -27,9 +27,15 @@
 
 #higher, #lower, #change {
     color: black;
+    background-color: lightgray;
     border: black 1px solid;
     border-radius: 10px;
     font-size: 16px;
+} 
+
+#higher:hover, #lower:hover, #change:hover {
+    font-weight: bold;
+    background-color: azure;
 } 
 
 #bet {
