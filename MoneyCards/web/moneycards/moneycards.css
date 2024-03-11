@@ -301,7 +301,7 @@ body {
 
     #bet-message {
         grid-area: bet-message;
-        margin-top: 15px;
+        margin-top: -15px;
         height: 10px;
         display: flex;
         justify-content: center;
