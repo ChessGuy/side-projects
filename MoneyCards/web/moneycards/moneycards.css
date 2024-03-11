@@ -112,8 +112,10 @@ body {
 @media only screen and (max-width: 1050px) {
     #game-board {
         display: grid;
-        /* max-height: 10000px; */
+        height: 1200px;
+        max-height: 10000px;
         grid-template-columns: 1fr;
+        align-items: center;
         grid-template-areas: 
         "board" 
         "bet"
@@ -132,7 +134,7 @@ body {
     }
 
     #button-grid {
-        margin-top: 50px;
+        /* margin-top: 50px; */
         margin-bottom: 25px;
         grid-area: bet;
     }
