@@ -358,7 +358,7 @@ function postHighScore () {
     if (playerBank >= 500) {
         let playerInitials = "";
         while (playerInitials.length != 3) {
-            playerInitials = prompt("You beat a High Score!  \n Enter your initials (ABC format): ") 
+            playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
     }
     console.log(playerInitials);
     }
