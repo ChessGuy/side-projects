@@ -16,7 +16,7 @@ let cardBoard = [starterCard, card1, card2, card3, card4, card5, card6, card7];
 let changeCards = [change1, change2, change3];
 
 let resultsMessage = "Welcome to Card Sharks! Good Luck!";
-let gameMessage = "Let's start round " + roundNumber + "! \n Is the next card higher or lower?";
+let gameMessage = "Let's start ROUND " + roundNumber + "! \n Is the next card higher or lower?";
 let betMessage = "";
 let didBustEarly = false; //Track if a player busted before the 4th round
 
@@ -313,7 +313,7 @@ function playRound () {
         // }  
 
     } else {
-        gameMessage = "Let's start round " + roundNumber + "!";
+        gameMessage = "Let's start ROUND " + roundNumber + "!";
     }
 
     if (roundNumber == 4) {
