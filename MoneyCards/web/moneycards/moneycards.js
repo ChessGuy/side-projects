@@ -245,13 +245,8 @@ function playRound () {
         isGameOver = true;
         displayMessages ();
 
-        let playerInitials = "";
-        while (playerInitials.length != 3) {
-            playerInitials = prompt("You beat a High Score!  \n Enter your initials (ABC format): ") 
-        }
-        console.log(playerInitials);
-
         //Add logic to print initials and score to database
+        setTimeout(postHighScore, 1000);
         return;
     }
 
@@ -318,21 +313,23 @@ function playRound () {
 
         if (!didBustEarly) {
 
-            let secondRowStartDiv = document.getElementById('row-2-start');
-            let secondRowCard = document.createElement('img');
-            secondRowCard.setAttribute('id','row-2-start-img');
-            secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
-            while (secondRowStartDiv.firstChild) {
-                secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
-            }
+            setTimeout(moveCardEarly, 3000);
+
+            // let secondRowStartDiv = document.getElementById('row-2-start');
+            // let secondRowCard = document.createElement('img');
+            // secondRowCard.setAttribute('id','row-2-start-img');
+            // secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+            // while (secondRowStartDiv.firstChild) {
+            //     secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
+            // }
             
-            secondRowStartDiv.appendChild(secondRowCard);
+            // secondRowStartDiv.appendChild(secondRowCard);
 
-            let endFirstRowDiv = document.getElementById('card-3');
+            // let endFirstRowDiv = document.getElementById('card-3');
 
-            while (endFirstRowDiv.firstChild) {
-                endFirstRowDiv.removeChild(endFirstRowDiv.firstChild);
-            }  
+            // while (endFirstRowDiv.firstChild) {
+            //     endFirstRowDiv.removeChild(endFirstRowDiv.firstChild);
+            // }  
         }
         
     } 
@@ -341,6 +338,34 @@ function playRound () {
 
     displayMessages ();
 
+}
+
+function postHighScore () {
+    if (playerBank >= 500) {
+        let playerInitials = "";
+        while (playerInitials.length != 3) {
+            playerInitials = prompt("You beat a High Score!  \n Enter your initials (ABC format): ") 
+    }
+    console.log(playerInitials);
+    }
+}
+
+function moveCardEarly () {
+    let secondRowStartDiv = document.getElementById('row-2-start');
+    let secondRowCard = document.createElement('img');
+    secondRowCard.setAttribute('id','row-2-start-img');
+    secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+    while (secondRowStartDiv.firstChild) {
+        secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
+    }
+            
+    secondRowStartDiv.appendChild(secondRowCard);
+
+    let endFirstRowDiv = document.getElementById('card-3');
+
+    while (endFirstRowDiv.firstChild) {
+        endFirstRowDiv.removeChild(endFirstRowDiv.firstChild);
+    }  
 }
 
 
