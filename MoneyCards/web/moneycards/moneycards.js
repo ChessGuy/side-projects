@@ -1,6 +1,7 @@
 //Game Parameters
 
 let roundNumber = 1; 
+let tempRound = 0; //Tracks the round for moving the card early
 let bid = 0;
 const MAX_ROUND = 7;
 let changes = 1; //Number of changes a player has
@@ -256,25 +257,31 @@ function playRound () {
         if (roundNumber < 4) {
             
             didBustEarly = true;
-            let secondRowStartDiv = document.getElementById('row-2-start');
-            let secondRowCard = document.createElement('img');
-            secondRowCard.setAttribute('id', 'row-2-start-img');
-            secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+
+            // Move the last card the player revealed on the first row and move it to the second
+            tempRound = roundNumber;
+            setTimeout(moveCardEarly, 500);
+
+            // let secondRowStartDiv = document.getElementById('row-2-start');
+            // let secondRowCard = document.createElement('img');
+            // secondRowCard.setAttribute('id', 'row-2-start-img');
+            // secondRowCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
             
-            while (secondRowStartDiv.firstChild) {
-                secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
-            }
+            // while (secondRowStartDiv.firstChild) {
+            //     secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
+            // }
             
-            secondRowStartDiv.appendChild(secondRowCard);
+            // secondRowStartDiv.appendChild(secondRowCard);
 
-            let endCardDiv = document.getElementById('card-' + (roundNumber - 1));
+            // let endCardDiv = document.getElementById('card-' + (roundNumber - 1));
 
-            while (endCardDiv.firstChild) {
-                endCardDiv.removeChild(endCardDiv.firstChild);
-            }  
+            // while (endCardDiv.firstChild) {
+            //     endCardDiv.removeChild(endCardDiv.firstChild);
+            // }  
 
-                roundNumber = 4;
-                gameMessage += "\nYou have busted before round 4!";
+            roundNumber = 4;
+            gameMessage += "\nYou have busted before round 4!";
+
             } else if (roundNumber < MAX_ROUND) {
                 gameMessage = "You busted! Game Over!"
                 isGameOver = true;
@@ -284,21 +291,26 @@ function playRound () {
     if (roundNumber == MAX_ROUND) {
         changes = 1;
         gameMessage = "Let's start the FINAL ROUND!  You must bet at least half of your bank."
-        let bigBetStartDiv = document.getElementById('row-3-start');
-        let bigBetCard = document.createElement('img');
-        bigBetCard.setAttribute('id', 'row-3-start-img');
-        bigBetCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
-        while (bigBetStartDiv.firstChild) {
-            bigBetStartDiv.removeChild(bigBetStartDiv.firstChild);
-        }
+
+        //Moves the last card from the second row to the top
+
+        setTimeout(moveCardToTopRow, 500);
+
+        // let bigBetStartDiv = document.getElementById('row-3-start');
+        // let bigBetCard = document.createElement('img');
+        // bigBetCard.setAttribute('id', 'row-3-start-img');
+        // bigBetCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+        // while (bigBetStartDiv.firstChild) {
+        //     bigBetStartDiv.removeChild(bigBetStartDiv.firstChild);
+        // }
         
-        bigBetStartDiv.appendChild(bigBetCard);
+        // bigBetStartDiv.appendChild(bigBetCard);
 
-        let endSecondRowDiv = document.getElementById('card-6');
+        // let endSecondRowDiv = document.getElementById('card-6');
 
-        while (endSecondRowDiv.firstChild) {
-            endSecondRowDiv.removeChild(endSecondRowDiv.firstChild);
-        }  
+        // while (endSecondRowDiv.firstChild) {
+        //     endSecondRowDiv.removeChild(endSecondRowDiv.firstChild);
+        // }  
 
     } else {
         gameMessage = "Let's start round " + roundNumber + "!";
@@ -312,8 +324,10 @@ function playRound () {
         //Check if last card in first row has a card.  If it does, bring it to the next row.
 
         if (!didBustEarly) {
-
-            setTimeout(moveCardEarly, 3000);
+            
+            setTimeout(moveCardToSecondRow, 500);
+            
+            //Move the last card from the first row to the second 
 
             // let secondRowStartDiv = document.getElementById('row-2-start');
             // let secondRowCard = document.createElement('img');
@@ -350,7 +364,7 @@ function postHighScore () {
     }
 }
 
-function moveCardEarly () {
+function moveCardToSecondRow () {
     let secondRowStartDiv = document.getElementById('row-2-start');
     let secondRowCard = document.createElement('img');
     secondRowCard.setAttribute('id','row-2-start-img');
@@ -366,6 +380,44 @@ function moveCardEarly () {
     while (endFirstRowDiv.firstChild) {
         endFirstRowDiv.removeChild(endFirstRowDiv.firstChild);
     }  
+}
+
+function moveCardToTopRow () {
+    let bigBetStartDiv = document.getElementById('row-3-start');
+    let bigBetCard = document.createElement('img');
+    bigBetCard.setAttribute('id', 'row-3-start-img');
+    bigBetCard.src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
+    while (bigBetStartDiv.firstChild) {
+        bigBetStartDiv.removeChild(bigBetStartDiv.firstChild);
+    }
+        
+    bigBetStartDiv.appendChild(bigBetCard);
+
+    let endSecondRowDiv = document.getElementById('card-6');
+
+    while (endSecondRowDiv.firstChild) {
+        endSecondRowDiv.removeChild(endSecondRowDiv.firstChild);
+    }     
+}
+
+function moveCardEarly () {
+    let secondRowStartDiv = document.getElementById('row-2-start');
+    let secondRowCard = document.createElement('img');
+    secondRowCard.setAttribute('id', 'row-2-start-img');
+    secondRowCard.src = "./cards/" + cardBoard[tempRound - 1] + ".png"
+            
+    while (secondRowStartDiv.firstChild) {
+        secondRowStartDiv.removeChild(secondRowStartDiv.firstChild);
+    }
+            
+    secondRowStartDiv.appendChild(secondRowCard);
+
+    let endCardDiv = document.getElementById('card-' + (tempRound - 1));
+
+    while (endCardDiv.firstChild) {
+        endCardDiv.removeChild(endCardDiv.firstChild);
+    }  
+
 }
 
 
