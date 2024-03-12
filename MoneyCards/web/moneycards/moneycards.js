@@ -280,7 +280,7 @@ function playRound () {
             // }  
 
             roundNumber = 4;
-            gameMessage += "\nYou have busted before round 4!";
+            gameMessage += "\nYou have busted before ROUND 4!";
 
             } else if (roundNumber < MAX_ROUND) {
                 gameMessage = "You busted! Game Over!"
