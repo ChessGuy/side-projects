@@ -1,3 +1,8 @@
+import database from "./database";
+
+//Test code for database
+console.log(database.list());
+
 //Game Parameters
 
 let roundNumber = 1; 
