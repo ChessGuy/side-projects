@@ -1,31 +1,33 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:8080"
-})
+const BASE_URL = 'http://localhost:8080';
 
-export default {
-  list() {
-    return http.get('/scores');
-  }
-}
+// const http = axios.create({
+//   baseURL: "http://localhost:8080"
+// })
 
-// const getScores = async () => {
-//     try {
-//       const response = await axios.get(`${baseURL}/scores`);
-  
-//       const scores = response.data;
-  
-//       console.log(`GET: Here's the list of scores`, scores);
-  
-//       return scores;
-//     } catch (errors) {
-//       console.error(errors);
-//     }
-//   };
+// export default {
+//   list() {
+//     return http.get('/scores');
+//   }
+// }
 
-//   const main = async () => {
-//     await getScores ();
-//   };
+const getScores = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/scores`);
   
-//   main();
+      const scores = response.data;
+  
+      console.log(`GET: Here's the list of scores`, scores);
+  
+      return scores;
+    } catch (errors) {
+      console.error(errors);
+    }
+  };
+
+  const main = async () => {
+    await getScores ();
+  };
+  
+  main();

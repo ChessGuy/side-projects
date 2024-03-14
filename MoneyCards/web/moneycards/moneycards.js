@@ -1,7 +1,7 @@
-import database from "./database";
+// import database from "./database";
 
 //Test code for database
-console.log(database.list());
+// console.log(database.list());
 
 //Game Parameters
 
