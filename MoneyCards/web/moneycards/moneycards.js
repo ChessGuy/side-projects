@@ -113,7 +113,7 @@ function isValidBid () {
         displayMessages ();
         return false; 
     } else if (bid < 1) {
-        betMessage = "** Bet cannot be negative. **";
+        betMessage = "** Bet must be greater than 0. **";
         displayMessages ();
         return false; 
     } else if (bid % 50 != 0) {
@@ -480,7 +480,7 @@ const getScores = async () => {
     }
   }
 
-  
+
 
   
   
