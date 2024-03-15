@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayMessages ();
     startGame ();
+    initDatabase();
     
     //Button Event Listeners 
     document.getElementById("higher").addEventListener('click', higher);
@@ -427,6 +428,60 @@ function moveCardEarly () {
     }  
 
 }
+
+//Database Control
+
+const BASE_URL = 'http://localhost:8080';
+
+const getScores = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/scores`);
+  
+      const scores = response.data;
+  
+      console.log(`GET: Here's the list of scores`, scores);
+  
+      return scores;
+    } catch (errors) {
+      console.error(errors);
+    }
+  };
+
+  const initDatabase = async () => {
+    updateTable(await getScores ());
+  };
+
+  const createDatabaseRow = entry => {
+    const tableElementRow = document.createElement('tr');
+    const tableElementInitials = document.createElement('td');
+    const tableElementScore = document.createElement('td');
+
+    tableElementInitials.appendChild(document.createTextNode(entry.initials));
+    tableElementScore.appendChild(document.createTextNode(entry.score));
+
+    // console.log(tableElementInitials)
+    tableElementRow.appendChild(tableElementInitials);
+    tableElementRow.appendChild(tableElementScore);
+
+    // console.log(tableElementRow)
+    return tableElementRow;
+    
+  };
+
+  const updateTable = tableRows => {
+    const scoreTable = document.getElementById('score-table');
+
+    if (Array.isArray(tableRows) && tableRows.length > 0) {
+        tableRows.map(tableRow => {
+            scoreTable.appendChild(createDatabaseRow(tableRow));
+        });
+    } else if (tableRows) {
+        scoreTable.appendChild(createDatabaseRow(tableRows));
+    }
+  }
+
+  
+  
 
 
 
