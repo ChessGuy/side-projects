@@ -480,8 +480,7 @@ const getScores = async () => {
     }
   }
 
-
-
+  
   
   
 
