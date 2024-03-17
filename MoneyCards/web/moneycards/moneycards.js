@@ -363,16 +363,15 @@ function playRound () {
 
 }
 
-function postHighScore () {
+async function postHighScore () {
 
-    async event => {
-        event.preventDefault();
+        // event.preventDefault();
 
         const lowestScoreObject = await getLowestScore ();    
     
         const lowestScore = lowestScoreObject.score
         // console.log(lowestScoreObject);
-        console.log(lowestScore);
+        // console.log(lowestScore);
         let playerInitials = "";
         if (playerBank > lowestScore) {
             while (playerInitials.length != 3) {
@@ -387,12 +386,12 @@ function postHighScore () {
         };
 
         const newScoreToPost = await addNewScore(newScoreObject);
-
         updateTable(newScoreToPost);
+
         await deleteLowestScore();
-        await getScores();
+        
+        // await getScores();
     }
-}
 
 function moveCardToSecondRow () {
     let secondRowStartDiv = document.getElementById('row-2-start');
@@ -482,8 +481,8 @@ const getLowestScore = async () => {
       }
     };
 
-//Create score method
-export const addNewScore = async score => {
+//Create score method (export)
+const addNewScore = async score => {
     try {
       const response = await axios.post(`${BASE_URL}/scores`, score);
       const newScore = response.data;
@@ -496,11 +495,11 @@ export const addNewScore = async score => {
     }
   };
 
-
-export const deleteLowestScore = async event => {
+//(export)
+const deleteLowestScore = async () => {
     try {
       const response = await axios.delete(`${BASE_URL}/scores/`);
-    //   console.log(`Deleted lowest score: `, id);
+      console.log(`Deleted lowest score: `);
   
       return response.data;
     } catch (errors) {
