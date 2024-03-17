@@ -364,13 +364,31 @@ function playRound () {
 }
 
 function postHighScore () {
-    if (playerBank >= 500) {
-        let playerInitials = "";
+    const lowestScore = getLowestScore ().score;
+    let playerInitials = "";
+    if (playerBank > lowestScore) {
         while (playerInitials.length != 3) {
             playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
     }
-    console.log(playerInitials);
+    // console.log(playerInitials);
     }
+
+    async event => {
+
+        event.preventDefault;
+
+        const newScoreObject = {
+            initials: playerInitials,
+            score: playerBank
+        };
+
+        const newScoreToPost = await addNewScore(newScoreObject);
+
+        updateTable(newScoreToPost);
+        deleteLowestScore();
+        getScores();
+    }
+
 }
 
 function moveCardToSecondRow () {
@@ -439,7 +457,7 @@ const getScores = async () => {
   
       const scores = response.data;
   
-      console.log(`GET: Here's the list of scores`, scores);
+    //   console.log(`GET: Here's the list of scores`, scores);
   
       return scores;
     } catch (errors) {
@@ -447,11 +465,50 @@ const getScores = async () => {
     }
   };
 
-  const initDatabase = async () => {
+const getLowestScore = async () => {
+    try {
+        const response = await axios.get(`${BASE_URL}/scores/lowest`);
+    
+        const lowestScore = response.data;
+    
+        console.log(`GET: Here's the lowest score`, lowestScore);
+    
+        return lowestScore;
+      } catch (errors) {
+        console.error(errors);
+      }
+    };
+
+export const addNewScore = async score => {
+    try {
+      const response = await axios.post(`${BASE_URL}/scores`, score);
+      const newScore = response.data;
+      
+      console.log(`Added a new Score!`, newScore);
+      
+      return newScore;
+    } catch (errors) {
+      console.error(errors);
+    }
+  };
+
+
+export const deleteLowestScore = async event => {
+    try {
+      const response = await axios.delete(`${BASE_URL}/scores/`);
+    //   console.log(`Deleted lowest score: `, id);
+  
+      return response.data;
+    } catch (errors) {
+      console.error(errors);
+    }
+  };
+
+const initDatabase = async () => {
     updateTable(await getScores ());
   };
 
-  const createDatabaseRow = entry => {
+const createDatabaseRow = entry => {
     const tableElementRow = document.createElement('tr');
     const tableElementInitials = document.createElement('td');
     const tableElementScore = document.createElement('td');
@@ -468,7 +525,7 @@ const getScores = async () => {
     
   };
 
-  const updateTable = tableRows => {
+const updateTable = tableRows => {
     const scoreTable = document.getElementById('score-table');
 
     if (Array.isArray(tableRows) && tableRows.length > 0) {
@@ -480,7 +537,7 @@ const getScores = async () => {
     }
   }
 
-  
+
   
   
 
