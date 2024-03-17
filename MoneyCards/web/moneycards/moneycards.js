@@ -364,18 +364,22 @@ function playRound () {
 }
 
 function postHighScore () {
-    const lowestScore = getLowestScore ().score;
-    let playerInitials = "";
-    if (playerBank > lowestScore) {
-        while (playerInitials.length != 3) {
-            playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
-    }
-    // console.log(playerInitials);
-    }
 
     async event => {
+        event.preventDefault();
 
-        event.preventDefault;
+        const lowestScoreObject = await getLowestScore ();    
+    
+        const lowestScore = lowestScoreObject.score
+        // console.log(lowestScoreObject);
+        console.log(lowestScore);
+        let playerInitials = "";
+        if (playerBank > lowestScore) {
+            while (playerInitials.length != 3) {
+                playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
+        }
+        // console.log(playerInitials);
+        }
 
         const newScoreObject = {
             initials: playerInitials,
@@ -385,10 +389,9 @@ function postHighScore () {
         const newScoreToPost = await addNewScore(newScoreObject);
 
         updateTable(newScoreToPost);
-        deleteLowestScore();
-        getScores();
+        await deleteLowestScore();
+        await getScores();
     }
-
 }
 
 function moveCardToSecondRow () {
@@ -479,6 +482,7 @@ const getLowestScore = async () => {
       }
     };
 
+//Create score method
 export const addNewScore = async score => {
     try {
       const response = await axios.post(`${BASE_URL}/scores`, score);
