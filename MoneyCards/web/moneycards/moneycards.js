@@ -378,8 +378,7 @@ async function postHighScore () {
                 playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
         }
         // console.log(playerInitials);
-        }
-
+        
         const newScoreObject = {
             initials: playerInitials,
             score: playerBank
@@ -387,8 +386,11 @@ async function postHighScore () {
 
         const newScoreToPost = await addNewScore(newScoreObject);
         updateTable(newScoreToPost);
+    }
 
-        await deleteLowestScore();
+        
+
+        // await deleteLowestScore();
         
         // await getScores();
     }
@@ -495,17 +497,17 @@ const addNewScore = async score => {
     }
   };
 
-//(export)
-const deleteLowestScore = async () => {
-    try {
-      const response = await axios.delete(`${BASE_URL}/scores/`);
-      console.log(`Deleted lowest score: `);
+// //(export)
+// const deleteLowestScore = async () => {
+//     try {
+//       const response = await axios.delete(`${BASE_URL}/scores/`);
+//       console.log(`Deleted lowest score: `);
   
-      return response.data;
-    } catch (errors) {
-      console.error(errors);
-    }
-  };
+//       return response.data;
+//     } catch (errors) {
+//       console.error(errors);
+//     }
+//   };
 
 const initDatabase = async () => {
     updateTable(await getScores ());

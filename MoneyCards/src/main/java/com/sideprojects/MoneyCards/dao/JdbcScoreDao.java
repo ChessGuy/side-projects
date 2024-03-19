@@ -87,6 +87,7 @@ public class JdbcScoreDao implements ScoreDao{
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data Integrity Violation", e);
         }
+        deleteLowestScore();
         return getScoreById(newId);
 
     }
@@ -95,8 +96,7 @@ public class JdbcScoreDao implements ScoreDao{
     public Score getLowestScore() {
         Score score = null;
 
-        String sql = "SELECT * FROM score " +
-                "WHERE score = (SELECT MIN (score) FROM score)";
+        String sql = "SELECT * FROM score WHERE score = (SELECT MIN (score) FROM score);";
 
         try {
             SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);

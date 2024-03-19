@@ -39,5 +39,34 @@ VALUES
 SELECT * FROM score
 ORDER BY score DESC;
 
+SELECT * FROM score 
+WHERE score in (SELECT MIN (score) FROM score)
+LIMIT 10;
 
+SELECT * FROM score
+ORDER BY score DESC
+LIMIT 10
 
+SELECT * 
+FROM (SELECT * FROM score
+ORDER BY score DESC
+LIMIT 10)
+WHERE score in (SELECT MIN (score) FROM score LIMIT 10);
+
+SELECT * FROM score
+WHERE score in (SELECT MIN (score) FROM score ORDER BY score.score DESC LIMIT 10)
+
+SELECT MIN (score) AS min_score, initials, score_id FROM score WHERE score IN
+(SELECT score.score FROM score
+	ORDER BY score.score DESC
+	LIMIT 10);
+
+	
+INSERT INTO score (initials, score) 
+VALUES 
+	('___', 1000)
+
+SELECT * FROM score WHERE score IN
+(SELECT score.score FROM score
+	ORDER BY score.score DESC
+	LIMIT 10);
