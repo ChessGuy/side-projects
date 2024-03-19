@@ -375,7 +375,7 @@ async function postHighScore () {
         let playerInitials = "";
         if (playerBank > lowestScore) {
             while (playerInitials.length != 3) {
-                playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ") 
+                playerInitials = prompt("You beat a High Score!  \nEnter your initials (ABC format): ").toUpperCase();
         }
         // console.log(playerInitials);
         
