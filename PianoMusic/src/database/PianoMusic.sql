@@ -1,6 +1,6 @@
 -- Drop tables
 
-DROP TABLE IF EXISTS composer, genre, collection, genre_piece, composer_piece, piece;
+DROP TABLE IF EXISTS fav_composer, fav_piece, composer, genre, collection, genre_piece, composer_piece, piece;
 
 -- **********************
 -- CREATE DATABASE TABLES
@@ -53,6 +53,22 @@ CREATE TABLE genre_piece (
 	genre_id integer NOT NULL,
     piece_id integer NOT NULL,
 	CONSTRAINT FK_genre FOREIGN KEY (genre_id) REFERENCES genre (genre_id),
+	CONSTRAINT FK_piece FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
+);
+
+-- Create fav_composer table
+CREATE TABLE fav_composer (
+	fav_composer_id serial NOT NULL,
+	composer_id integer NOT NULL UNIQUE,
+	CONSTRAINT PK_fav_composer PRIMARY KEY (fav_composer_id),
+	CONSTRAINT FK_composer FOREIGN KEY (composer_id) REFERENCES composer (composer_id)
+);
+
+-- Create fav_piece table
+CREATE TABLE fav_piece (
+	fav_piece_id serial NOT NULL,
+	piece_id integer NOT NULL UNIQUE,
+	CONSTRAINT PK_fav_piece PRIMARY KEY (fav_piece_id),
 	CONSTRAINT FK_piece FOREIGN KEY (piece_id) REFERENCES piece (piece_id)
 );
 
@@ -216,6 +232,6 @@ JOIN composer ON composer_piece.composer_id = composer.composer_id
 WHERE published_year > 2000
 ORDER BY published_year DESC;
 
-
+SELECT * FROM piece;
 
 
