@@ -2,7 +2,7 @@
 
  # Project Summary
 
-## CardSharks
+## [CardSharks](https://github.com/ChessGuy/side-projects/tree/main/CardSharks)
 - Overview:  
 - Languages:
 - Frameworks/tools:
