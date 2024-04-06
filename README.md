@@ -22,8 +22,12 @@
 - Languages:  Java, HTML, CSS, JavaScript, SQL
 - Frameworks/tools:  Database with PostgresSQL, API testing with Postman, API writing with Spring, API connection to front end with Axios
 
-## [PianoMusic(Work in progress)](https://github.com/ChessGuy/side-projects/tree/main/PianoMusic)
+## [PianoMusic (Work in progress)](https://github.com/ChessGuy/side-projects/tree/main/PianoMusic)
 - Overview:  N/A
 - Languages:  TBD
 - Frameworks/tools:  TBD
 
+## [QuizGame](https://github.com/ChessGuy/side-projects/tree/main/QuizGame)
+- Overview:  A command line interface quiz application that pulls questions using a public API and allows user to select difficulty and category with unit testing of API data.
+- Languages:  Java
+- Frameworks/tools:  Unit testing with JUnit, API pulls with RestTemplate, Text decoding with Base64, JSON serializing with Jackson
