@@ -31,3 +31,8 @@
 - Overview:  A command line interface quiz application that pulls questions using a public API and allows user to select difficulty and category with unit testing of API data.
 - Languages:  Java
 - Frameworks/tools:  Unit testing with JUnit, API pulls with RestTemplate, Text decoding with Base64, JSON serializing with Jackson
+
+## [TicTacToc](https://github.com/ChessGuy/side-projects/tree/main/TicTacToc)
+- Overview:  A graphical clone of Tic Tac Toe game with unit testing and clickable game board.
+- Languages:  Python
+- Frameworks/tools:  Unit testing with unittest, Graphics with Turtle, Board matrix with numpy
