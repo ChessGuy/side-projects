@@ -1,4 +1,4 @@
-### ***I built each of these projects to test my ability in a variety of coding languages and frameworks/tools.*** 
+### ***I built each of these projects to test my ability in a variety of coding languages and frameworks/tools.  I will be updating it as I complete more projects*** 
 
  # Projects Summary
 
