@@ -35,4 +35,4 @@
 ## [TicTacToc](https://github.com/ChessGuy/side-projects/tree/main/TicTacToc)
 - Overview:  A graphical clone of Tic Tac Toe game with unit testing and clickable game board.
 - Languages:  Python
-- Frameworks/tools:  Unit testing with unittest, Graphics with Turtle, Board matrix with numpy
+- Frameworks/tools:  Unit testing with unittest, Graphics with Turtle
