@@ -21,3 +21,9 @@
 - Overview:  A full stack version of the Money Cards game from the game show Card Sharks with high score API and database 
 - Languages:  Java, HTML, CSS, JavaScript, SQL
 - Frameworks/tools:  Database with PostgresSQL, API testing with Postman, API writing with Spring, API connection to front end with Axios
+
+## [PianoMusic(Work in progress)](https://github.com/ChessGuy/side-projects/tree/main/PianoMusic)
+- Overview:  N/A
+- Languages:  TBD
+- Frameworks/tools:  TBD
+
