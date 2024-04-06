@@ -3,7 +3,7 @@
  # Project Summary
 
 ## [CardSharks](https://github.com/ChessGuy/side-projects/tree/main/CardSharks)
-- Overview:  
-- Languages:
-- Frameworks/tools:
+- Overview:  A command line interface version of the Money Cards game from the game show Card Sharks  with file writing for high scores.
+- Languages:  Java
+- Frameworks/tools:  File reading/writing 
 
