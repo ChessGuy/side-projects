@@ -12,3 +12,8 @@
 - Languages:  Java
 - Frameworks/tools:  Unit testing with JUnit
 
+## [GuitarFretboardGuide](https://github.com/ChessGuy/side-projects/tree/main/GuitarFretboardGuide)
+- Overview:  A graphical guide to the notes on a standard guitar fretboard with buttons to show or hide certain notes
+- Languages:  Java
+- Frameworks/tools:  Graphics with Swing and AWT
+
