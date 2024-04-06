@@ -28,7 +28,7 @@
 - Frameworks/tools:  TBD
 
 ## [QuizGame](https://github.com/ChessGuy/side-projects/tree/main/QuizGame)
-- Overview:  A command line interface quiz application that pulls questions using a public API and allows user to select difficulty and category with unit testing of API data.
+- Overview:  A command line interface quiz application that pulls questions from a public API and allows user to select difficulty and category with unit testing of API data.
 - Languages:  Java
 - Frameworks/tools:  Unit testing with JUnit, API pulls with RestTemplate, Text decoding with Base64, JSON serializing with Jackson
 
