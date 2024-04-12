@@ -194,6 +194,7 @@ function changeCard() {
         cardBoard[roundNumber - 1] = newCard;
         changes -= 1;
 
+    // Select the correct change card based on the round if the player changes the first card in the row
     if (roundNumber == 1) {
         document.getElementById("starter-card-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
     } else if (roundNumber == 4) {
@@ -204,6 +205,7 @@ function changeCard() {
         document.getElementById("card-" + (roundNumber - 1) + "-img").src = "./cards/" + cardBoard[roundNumber - 1] + ".png"
     }
 
+    // Selects the correct change card based on the round to replace with the current card
     if (roundNumber < 4) {
         let changeDiv1 = document.getElementById('change-card-1');
         while (changeDiv1.firstChild) {
